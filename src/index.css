@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    
+    --bg-app: #070d0b;
+    --bg-card: #0d1714;
+    --bg-card-subtle: #08100d;
+    --bg-elevated: #13221e;
+    --bg-hover: #1c322b;
+    --border-app: #1b332b;
+
+    --brand-color: #10b981;
+    --brand-hover: #059669;
+    --brand-text: #000000;
+    --brand-glow: rgba(16, 185, 129, 0.25);
+    --brand-border: rgba(16, 185, 129, 0.4);
+    --brand-subtle: rgba(16, 185, 129, 0.12);
+  }
+
+  body {
+    background-color: var(--bg-app);
+    color: #f3f4f6;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: background-color 0.25s ease;
+  }
+
+  input, textarea {
+    user-select: auto;
+    -webkit-user-select: auto;
+  }
+}
+
+/* Utilitários dinâmicos de fundo e superfícies que acompanham o tema */
+.bg-app {
+  background-color: var(--bg-app);
+}
+.bg-card {
+  background-color: var(--bg-card);
+}
+.bg-card-subtle {
+  background-color: var(--bg-card-subtle);
+}
+.bg-elevated {
+  background-color: var(--bg-elevated);
+}
+.bg-elevated-hover:hover {
+  background-color: var(--bg-hover);
+}
+.border-app {
+  border-color: var(--border-app);
+}
+
+/* Utilitários de destaque da cor da marca */
+.text-brand {
+  color: var(--brand-color);
+}
+.bg-brand {
+  background-color: var(--brand-color);
+  color: var(--brand-text, #000000);
+}
+.bg-brand-hover:hover {
+  background-color: var(--brand-hover);
+}
+.bg-brand-subtle {
+  background-color: var(--brand-subtle);
+}
+.border-brand {
+  border-color: var(--brand-border);
+}
+.border-brand-solid {
+  border-color: var(--brand-color);
+}
+.ring-brand {
+  --tw-ring-color: var(--brand-color);
+}
+.shadow-brand {
+  box-shadow: 0 4px 14px var(--brand-glow);
+}
+
+/* Custom scrollbar adaptado ao tema */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-app);
+}
+
+/* Pulse animation for timer */
+@keyframes timerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.03); opacity: 0.9; }
+}
+
+.animate-timer-pulse {
+  animation: timerPulse 1s ease-in-out infinite;
+}
+
+/* Anatomical layer mask blending */
+.muscle-mask-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
