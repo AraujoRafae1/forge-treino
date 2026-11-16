@@ -37,6 +37,11 @@ index_original.html
 styles_original.css
 plans_extracted.json
 demos_extracted.json
-anatomy-base-hq.png
-anatomy-masks/
+/anatomy-base-hq.png
+/anatomy-masks/
 apk-download/
+
+# Ensure public anatomy assets are always included
+!public/anatomy-base-hq.png
+!public/anatomy-masks/
+!public/anatomy-masks/**
