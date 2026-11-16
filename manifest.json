@@ -1,0 +1,18 @@
+{
+  "name": "Forge Treino Pro",
+  "short_name": "Forge Treino",
+  "description": "App de treino inteligente com controle de séries, descanso e recuperação muscular",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
