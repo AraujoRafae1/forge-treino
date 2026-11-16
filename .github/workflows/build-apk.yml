@@ -1,13 +1,16 @@
-name: Compilar APK Android
+name: Compilar APK Android e Publicar WebApp iPhone
 
 on:
   push:
     branches: [ main, master ]
   workflow_dispatch: # Permite disparar manualmente pelo botão no GitHub
 
+permissions:
+  contents: write
+
 jobs:
   build-apk:
-    name: Gerar APK Android
+    name: Gerar APK Android e Publicar WebApp
     runs-on: ubuntu-latest
 
     steps:
@@ -50,3 +53,9 @@ jobs:
           name: Forge-Treino-App
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
+
+      - name: Publicar WebApp no GitHub Pages (iPhone & Web)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
