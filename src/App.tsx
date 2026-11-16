@@ -14,7 +14,7 @@ import {
   saveActiveWorkout 
 } from './utils/storage';
 import { applyTheme } from './utils/theme';
-import { EXERCISE_CATALOG } from './data/exerciseCatalog';
+import { EXERCISE_CATALOG, detectMuscleFromName, MUSCLE_LABELS } from './data/exerciseCatalog';
 import { HomeTab } from './components/HomeTab';
 import { PlansTab } from './components/PlansTab';
 import { HistoryTab } from './components/HistoryTab';
@@ -189,12 +189,13 @@ export function App() {
         );
       }
 
+      const detectedMuscle = catalogEntry?.muscle || detectMuscleFromName(name);
       return {
         originalName: name,
         currentName: name,
-        muscle: catalogEntry?.muscle || 'chest',
-        subGroup: catalogEntry?.subGroup || 'chest_flat',
-        movementLabel: catalogEntry?.movementLabel || 'Geral',
+        muscle: detectedMuscle,
+        subGroup: catalogEntry?.subGroup || `${detectedMuscle}_default`,
+        movementLabel: catalogEntry?.movementLabel || MUSCLE_LABELS[detectedMuscle] || 'Geral',
         demoUrl: catalogEntry?.demoUrl,
         sets
       };

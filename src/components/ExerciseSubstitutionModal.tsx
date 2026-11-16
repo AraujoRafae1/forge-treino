@@ -18,7 +18,7 @@ export const ExerciseSubstitutionModal: React.FC<Props> = ({
   onSelect,
   onClose
 }) => {
-  const substitutions = getSubstitutionsForExercise(currentExerciseName);
+  const substitutions = getSubstitutionsForExercise(currentExerciseName, targetMuscle);
   const currentExercise = EXERCISE_CATALOG.find(
     e => e.name.toLowerCase() === currentExerciseName.toLowerCase()
   );

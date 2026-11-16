@@ -52,9 +52,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Abdominal supra declinado",
-    "muscle": "chest",
-    "subGroup": "chest_decline",
-    "movementLabel": "Peitoral Inferior (Declinado)",
+    "muscle": "core",
+    "subGroup": "core_crunch",
+    "movementLabel": "Abdômen (Prancha Declinada)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/decline-sit-up.gif"
   },
   {
@@ -199,9 +199,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Elevação de quadril",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "glutes",
+    "subGroup": "glutes_bridge",
+    "movementLabel": "Glúteos (Elevação Pélvica)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/barbell-glute-bridge.gif"
   },
   {
@@ -248,9 +248,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Abdutor",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "glutes",
+    "subGroup": "glutes_abduction",
+    "movementLabel": "Glúteos (Cadeira Abdutora)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abductors/lever-seated-hip-abduction.gif"
   },
   {
@@ -297,9 +297,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Abdominal supra na prancha declinada",
-    "muscle": "chest",
-    "subGroup": "chest_decline",
-    "movementLabel": "Peitoral Inferior (Declinado)",
+    "muscle": "core",
+    "subGroup": "core_crunch",
+    "movementLabel": "Abdômen (Prancha Declinada)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abs/decline-crunch.gif"
   },
   {
@@ -353,9 +353,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Elevação de quadril com 2 segundos de pico de contração",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "glutes",
+    "subGroup": "glutes_bridge",
+    "movementLabel": "Glúteos (Elevação Pélvica)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/barbell-glute-bridge.gif"
   },
   {
@@ -549,9 +549,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Abdutor com 2 segundos de pico de contração",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "glutes",
+    "subGroup": "glutes_abduction",
+    "movementLabel": "Glúteos (Cadeira Abdutora)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abductors/lever-seated-hip-abduction.gif"
   },
   {
@@ -689,9 +689,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Adutor",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "quads",
+    "subGroup": "quads_adduction",
+    "movementLabel": "Coxas / Adutores (Cadeira Adutora)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/adductors/lever-seated-hip-adduction.gif"
   },
   {
@@ -780,16 +780,16 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Afundo no smith com step",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "quads",
+    "subGroup": "quads_compound",
+    "movementLabel": "Quadríceps / Glúteos (Afundo no Smith)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/glutes/barbell-one-leg-squat.gif"
   },
   {
     "name": "Abdutor com 3 segundos de pico de contração",
-    "muscle": "chest",
-    "subGroup": "chest_flat",
-    "movementLabel": "Peitoral",
+    "muscle": "glutes",
+    "subGroup": "glutes_abduction",
+    "movementLabel": "Glúteos (Cadeira Abdutora)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/abductors/lever-seated-hip-abduction.gif"
   },
   {
@@ -801,9 +801,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Tríceps corda unilateral",
-    "muscle": "shoulders",
-    "subGroup": "shoulders_lateral",
-    "movementLabel": "Ombros (Deltoide Lateral)",
+    "muscle": "triceps",
+    "subGroup": "triceps_cable",
+    "movementLabel": "Tríceps (Polia / Extensão Unilateral)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/triceps/cable-one-arm-pushdown.gif"
   },
   {
@@ -843,9 +843,9 @@ export const EXERCISE_CATALOG: CatalogExercise[] = [
   },
   {
     "name": "Voador inverso com 2 segundos de pico",
-    "muscle": "chest",
-    "subGroup": "chest_fly",
-    "movementLabel": "Peitoral (Isolador / Crucifixo)",
+    "muscle": "shoulders",
+    "subGroup": "shoulders_rear",
+    "movementLabel": "Ombros (Deltoide Posterior)",
     "demoUrl": "https://cdn.jsdelivr.net/gh/JahelCuadrado/ExerciseGymGifsDB@v1.1.0/delts/lever-seated-reverse-fly.gif"
   },
   {
@@ -871,31 +871,46 @@ export const MUSCLE_LABELS: Record<MuscleGroup, string> = {
 };
 
 /**
+ * Detecta o grupamento muscular a partir do nome caso o exercício seja customizado ou não encontrado
+ */
+export function detectMuscleFromName(name: string): MuscleGroup {
+  const n = name.toLowerCase();
+  if (/supino|voador(?!.*inverso)|cross\s*over|crossover|crucifixo(?!.*inverso)/i.test(n)) return 'chest';
+  if (/remada|pulley|puxada|terra|serrote|pulldown|hiperextens/i.test(n)) return 'back';
+  if (/rosca|scott|b[ií]ceps/i.test(n)) return 'biceps';
+  if (/tr[ií]ceps|paralela|franc[eê]s|testa/i.test(n)) return 'triceps';
+  if (/desenvolvimento|eleva[cç][aã]o\s*lateral|eleva[cç][aã]o\s*frontal|deltoide|voador\s*inverso|crucifixo\s*inverso/i.test(n)) return 'shoulders';
+  if (/abdominal|infra|supra|prancha|core/i.test(n)) return 'core';
+  if (/panturrilha/i.test(n)) return 'calves';
+  if (/agachamento|hack|leg\s*45|extens|adutor/i.test(n)) return 'quads';
+  if (/flexor|stiff/i.test(n)) return 'hamstrings';
+  if (/quadril|abdutor|gl[uú]teo|p[eé]lvica|eleva[cç][aã]o\s*de\s*quadril|afundo|avan[cç]o/i.test(n)) return 'glutes';
+  return 'chest';
+}
+
+/**
  * Retorna as opções selecionadas de substituição para um exercício:
- * - Filtra ESTRITAMENTE pelo mesmo músculo.
- * - Prioriza o mesmo sub-agrupamento / plano de movimento (ex: Superior Inclinado com Superior Inclinado).
+ * - Filtra ESTRITAMENTE pelo mesmo músculo (sem jamais misturar grupos musculares).
+ * - Prioriza o mesmo sub-agrupamento / plano de movimento (ex: Inclinado com Inclinado).
  * - Remove repetições desnecessárias.
  */
-export function getSubstitutionsForExercise(currentName: string): CatalogExercise[] {
+export function getSubstitutionsForExercise(currentName: string, targetMuscle?: MuscleGroup): CatalogExercise[] {
   const current = EXERCISE_CATALOG.find(e => e.name.toLowerCase() === currentName.toLowerCase());
   
-  if (!current) {
-    return [];
+  // O grupo muscular ALVO é rigoroso: usa targetMuscle se passado, ou o músculo do exercício atual
+  const muscle: MuscleGroup = targetMuscle || current?.muscle || detectMuscleFromName(currentName);
+
+  // Filtra ESTRITAMENTE pelo mesmo músculo (garantia de 100% de isolamento)
+  const allSameMuscle = EXERCISE_CATALOG.filter(
+    e => e.muscle === muscle && e.name.toLowerCase() !== currentName.toLowerCase()
+  );
+
+  // Se tivermos o subgrupo biomecânico do exercício atual, priorizamos primeiro
+  if (current?.subGroup) {
+    const sameSubGroup = allSameMuscle.filter(e => e.subGroup === current.subGroup);
+    const otherSubGroup = allSameMuscle.filter(e => e.subGroup !== current.subGroup);
+    return [...sameSubGroup, ...otherSubGroup].slice(0, 8);
   }
 
-  // 1. Alternativas do mesmo subgrupo biomecânico (ex: outros supinos inclinados)
-  const sameSubGroup = EXERCISE_CATALOG.filter(
-    e => e.subGroup === current.subGroup && e.name.toLowerCase() !== current.name.toLowerCase()
-  );
-
-  // 2. Outras alternativas do mesmo músculo principal (ex: outros peitorais)
-  const sameMuscleGeneral = EXERCISE_CATALOG.filter(
-    e => e.muscle === current.muscle && 
-         e.subGroup !== current.subGroup && 
-         e.name.toLowerCase() !== current.name.toLowerCase()
-  );
-
-  // Combina dando prioridade total ao mesmo ângulo/movimento
-  // Limitando a opções selecionadas e não repetitivas (máximo 6 no total)
-  return [...sameSubGroup, ...sameMuscleGeneral].slice(0, 8);
+  return allSameMuscle.slice(0, 8);
 }
