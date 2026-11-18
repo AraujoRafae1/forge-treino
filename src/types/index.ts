@@ -19,8 +19,8 @@ export interface SetTechnique {
 export interface WorkoutSet {
   id: string;
   number: number;
-  type: 'warmup' | 'feeder' | 'work' | 'rest-pause' | 'drop';
-  label: string; // "Aquec.", "Ajuste", "Trabalho", "Rest-pause"
+  type: 'warmup' | 'feeder' | 'work' | 'rest-pause' | 'drop' | 'partials' | string;
+  label: string; // "Aquec.", "Ajuste", "Trabalho", "Rest-pause 1", etc.
   targetReps: string;
   weight: number;
   reps: number;
@@ -28,6 +28,9 @@ export interface WorkoutSet {
   prevWeight?: number;
   prevReps?: number;
   side?: 'E' | 'D' | null;
+  restSeconds?: number;
+  technique?: string;
+  factor?: number;
 }
 
 export interface CatalogExercise {

@@ -2,533 +2,6 @@ import { WorkoutPlanRaw } from '../types';
 
 export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
   {
-    "id": "female-ab-2",
-    "name": "Feminino AB • 2× na semana",
-    "level": "Iniciante",
-    "days": 2,
-    "note": "Corpo inteiro • base técnica e adaptação",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Corpo inteiro 1",
-        "exercises": [
-          [
-            "Leg 45",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Supino reto barra",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Flexor sentado",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Pulley frente triângulo",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Adutor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Elevação lateral",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Abdutor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Tríceps corda",
-            "3 trabalho",
-            "10-15",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Corpo inteiro 2",
-        "exercises": [
-          [
-            "Extensor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Voador",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Flexor deitado",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Remada baixa triângulo",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Adutor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Elevação frontal",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Abdutor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Panturrilha em pé na máquina",
-            "3 trabalho",
-            "10-15",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "female-ab-4",
-    "name": "Feminino AB • 4× na semana",
-    "level": "Iniciante",
-    "days": 4,
-    "note": "AB repetido • volume moderado e execução simples",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Pernas + abdômen",
-        "exercises": [
-          [
-            "Leg 45",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Extensor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Flexor sentado",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Flexor deitado",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Abdutor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Adutor",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Abdominal supra no solo",
-            "3 trabalho",
-            "15-20",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Superior + panturrilhas",
-        "exercises": [
-          [
-            "Supino inclinado barra",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Pulley frente aberto",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Remada baixa triângulo",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Desenvolvimento sentado com halteres",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Elevação lateral",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Tríceps corda",
-            "3 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Panturrilha em pé na máquina ou no smith com step",
-            "3 trabalho",
-            "10-15",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "beginner-4",
-    "name": "Iniciantes 4x na semana",
-    "level": "Iniciante",
-    "days": 4,
-    "note": "Base técnica e adaptação • A/B repetido",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Parte superior",
-        "exercises": [
-          [
-            "Supino inclinado",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Supino reto barra",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Pulley frente aberto",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Remada baixa triângulo",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Desenvolvimento sentado com halteres",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Elevação lateral",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Tríceps corda",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Rosca direta barra",
-            "3 séries",
-            "10-15",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Pernas + abdômen",
-        "exercises": [
-          [
-            "Leg 45",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Extensor",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Flexor sentado",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Flexor deitado",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Abdutor",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Panturrilha em pé na máquina ou smith",
-            "3 séries",
-            "10-15",
-            false
-          ],
-          [
-            "Abdominal supra no solo",
-            "3 séries",
-            "10-15",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "ppl-int",
-    "name": "PPL Intermediário",
-    "level": "Intermediário",
-    "days": 3,
-    "note": "Pull • Push • Legs",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Costas + bíceps + abdômen",
-        "exercises": [
-          [
-            "Remada curvada com barra",
-            "2 aquec. + 2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa triângulo",
-            "2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa pegada aberta",
-            "1 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Pulley frente triângulo",
-            "2 ajuste + 1 trabalho + 1 drop set",
-            "10-15",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Meio terra",
-            "1 aquec. + 2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Rosca Scott máquina",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Abdominal infra na torre",
-            "3 trabalho",
-            "Máx.",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Peito + ombros + tríceps + panturrilhas",
-        "exercises": [
-          [
-            "Supino inclinado com halteres",
-            "2 aquec. + 2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino reto com halteres",
-            "2 ajuste + 1 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Supino declinado barra ou máquina",
-            "1 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Voador com pico de contração",
-            "2 ajuste + 1 trabalho + 1 drop set",
-            "10-15",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Elevação frontal corda ou halteres",
-            "1 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação lateral sentada com halteres",
-            "2 ajuste + 1 trabalho + 1 drop set",
-            "8-12",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Tríceps corda",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Panturrilha máquina em pé",
-            "2 aquec. + 2 ajuste + 3 trabalho",
-            "8-12",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "C",
-        "name": "Pernas + glúteos",
-        "exercises": [
-          [
-            "Extensor",
-            "2 aquec. + 2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Hack machine",
-            "1 aquec. + 2 ajuste + 1 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Leg 45",
-            "2 ajuste + 1 trabalho + 10 repetições parciais após a falha",
-            "6-10",
-            false,
-            {
-              "kind": "partials",
-              "count": 1
-            }
-          ],
-          [
-            "Flexor deitado",
-            "1 aquec. + 2 ajuste + 1 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Stiff",
-            "1 aquec. + 2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação de quadril",
-            "1 aquec. + 2 ajuste + 1 trabalho",
-            "6-10",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
     "id": "abcd-int",
     "name": "ABCD Intermediário",
     "level": "Intermediário",
@@ -789,6 +262,1135 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
             "1 aquec. + 1-2 ajuste + 1 trabalho",
             "6-10",
             false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beginner-4",
+    "name": "Iniciantes 4x na semana",
+    "level": "Iniciante",
+    "days": 4,
+    "note": "Base técnica e adaptação • A/B repetido",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Parte superior",
+        "exercises": [
+          [
+            "Supino inclinado",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Supino reto barra",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Pulley frente aberto",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Remada baixa triângulo",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Desenvolvimento sentado com halteres",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Elevação lateral",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Tríceps corda",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Rosca direta barra",
+            "3 séries",
+            "10-15",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Pernas + abdômen",
+        "exercises": [
+          [
+            "Leg 45",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Extensor",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Flexor sentado",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Flexor deitado",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Abdutor",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Panturrilha em pé na máquina ou smith",
+            "3 séries",
+            "10-15",
+            false
+          ],
+          [
+            "Abdominal supra no solo",
+            "3 séries",
+            "10-15",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "abcd-adv",
+    "name": "ABCD Avançado",
+    "level": "Avançado",
+    "days": 4,
+    "note": "Maior volume • rest-pause e drop sets",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Peito + bíceps + abdômen",
+        "exercises": [
+          [
+            "Supino inclinado com halteres ou máquina",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto com halteres ou máquina",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Supino declinado barra ou máquina",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Voador com 2 segundos de pico de contração",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "10-15",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Rosca direta barra livre ou cabo com barra",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Rosca Scott máquina",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Rosca direta corda",
+            "1 ajuste + 2 trabalho + 1 drop set",
+            "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Abdominal supra na prancha declinada",
+            "3 trabalho",
+            "15-20",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Costas + panturrilhas",
+        "exercises": [
+          [
+            "Remada curvada com barra com 2 segundos de pico de contração",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa triângulo com 2 segundos de pico de contração",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa pegada aberta com 2 segundos de pico de contração",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Pulley frente triângulo com 2 segundos de pico de contração",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Meio terra",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Panturrilha máquina ou em pé no smith",
+            "1 aquec. + 2 ajuste + 3 trabalho",
+            "6-10",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Ombros + tríceps + abdômen",
+        "exercises": [
+          [
+            "Desenvolvimento halteres ou máquina",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação frontal corda ou halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Elevação lateral",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação unilateral cabo",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "10-15",
+            true,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Tríceps testa corda",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Tríceps corda",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Tríceps francês",
+            "1 ajuste + 2 trabalho + 1 drop set",
+            "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Abdominal infra na torre",
+            "3 trabalho",
+            "15-20",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "D",
+        "name": "Pernas + glúteos",
+        "exercises": [
+          [
+            "Panturrilha sentada",
+            "1 aquec. + 2 ajuste + 3 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Agachamento livre",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Leg 45",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Extensor",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Flexor deitado com 2 segundos de pico de contração",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Stiff",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação de quadril com 2 segundos de pico de contração",
+            "1 aquec. + 2 ajuste + 3 trabalho",
+            "6-10",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ppl-abc",
+    "name": "PPL ABC",
+    "level": "Avançado",
+    "days": 3,
+    "note": "Pull • Push • Legs com maior volume",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Costas + bíceps + abdômen",
+        "exercises": [
+          [
+            "Remada curvada com barra",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa triângulo",
+            "2 ajuste + 1 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Remada baixa pegada aberta",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Pulley frente triângulo",
+            "2 ajuste + 2 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Meio terra",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Rosca Scott máquina",
+            "2 ajuste + 3 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Abdominal infra na torre",
+            "3 trabalho",
+            "Máx.",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Peito + ombros + tríceps + panturrilhas",
+        "exercises": [
+          [
+            "Supino inclinado com halteres",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto com halteres",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino declinado barra ou máquina",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Voador com pico de contração",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "10-15",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Elevação frontal corda ou halteres",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "8-12",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Tríceps corda",
+            "2 ajuste + 3 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Panturrilha máquina em pé",
+            "2 aquec. + 2 ajuste + 3 trabalho",
+            "8-12",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Pernas + glúteos",
+        "exercises": [
+          [
+            "Extensor",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Hack machine",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Leg 45",
+            "2 ajuste + 2 trabalho + 10 repetições parciais após a falha",
+            "6-10",
+            false,
+            {
+              "kind": "partials",
+              "count": 1
+            }
+          ],
+          [
+            "Flexor deitado",
+            "1 aquec. + 2 ajuste + 1 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Stiff",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação de quadril",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ppl-int",
+    "name": "PPL Intermediário",
+    "level": "Intermediário",
+    "days": 3,
+    "note": "Pull • Push • Legs",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Costas + bíceps + abdômen",
+        "exercises": [
+          [
+            "Remada curvada com barra",
+            "2 aquec. + 2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa triângulo",
+            "2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa pegada aberta",
+            "1 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Pulley frente triângulo",
+            "2 ajuste + 1 trabalho + 1 drop set",
+            "10-15",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Meio terra",
+            "1 aquec. + 2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Rosca Scott máquina",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Abdominal infra na torre",
+            "3 trabalho",
+            "Máx.",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Peito + ombros + tríceps + panturrilhas",
+        "exercises": [
+          [
+            "Supino inclinado com halteres",
+            "2 aquec. + 2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto com halteres",
+            "2 ajuste + 1 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Supino declinado barra ou máquina",
+            "1 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Voador com pico de contração",
+            "2 ajuste + 1 trabalho + 1 drop set",
+            "10-15",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Elevação frontal corda ou halteres",
+            "1 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "2 ajuste + 1 trabalho + 1 drop set",
+            "8-12",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Tríceps corda",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Panturrilha máquina em pé",
+            "2 aquec. + 2 ajuste + 3 trabalho",
+            "8-12",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Pernas + glúteos",
+        "exercises": [
+          [
+            "Extensor",
+            "2 aquec. + 2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Hack machine",
+            "1 aquec. + 2 ajuste + 1 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Leg 45",
+            "2 ajuste + 1 trabalho + 10 repetições parciais após a falha",
+            "6-10",
+            false,
+            {
+              "kind": "partials",
+              "count": 1
+            }
+          ],
+          [
+            "Flexor deitado",
+            "1 aquec. + 2 ajuste + 1 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            }
+          ],
+          [
+            "Stiff",
+            "1 aquec. + 2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação de quadril",
+            "1 aquec. + 2 ajuste + 1 trabalho",
+            "6-10",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ppl-6",
+    "name": "PPL ABC/DEF",
+    "level": "Avançado",
+    "days": 6,
+    "note": "ABC • descanso • DEF",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Pull 1",
+        "exercises": [
+          [
+            "Remada curvada com barra",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa triângulo",
+            "2 ajuste + 1 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Remada baixa pegada aberta",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Pulley frente triângulo",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Meio terra",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Rosca Scott máquina",
+            "2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Abdominal infra na torre",
+            "3 trabalho",
+            "Máx.",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Push 1",
+        "exercises": [
+          [
+            "Supino inclinado com halteres",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto com halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Supino declinado barra ou máquina",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Voador com pico de contração",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "10-15",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Elevação frontal corda ou halteres",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "8-12",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Tríceps corda",
+            "2 ajuste + 3 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Panturrilha máquina em pé",
+            "2 aquec. + 2 ajuste + 3 trabalho",
+            "8-12",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Legs 1",
+        "exercises": [
+          [
+            "Extensor",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Hack machine",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Leg 45",
+            "2 ajuste + 2 trabalho + 10 repetições parciais",
+            "6-10",
+            false,
+            {
+              "kind": "partials",
+              "count": 1
+            }
+          ],
+          [
+            "Flexor deitado",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Stiff",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação de quadril",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "D",
+        "name": "Pull 2",
+        "exercises": [
+          [
+            "Remada curvada com barra",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Remada baixa pegada aberta",
+            "2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Pulley frente aberto",
+            "2 ajuste + 2 trabalho",
+            "8-12",
+            false
+          ],
+          [
+            "Pulley frente triângulo",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Hiperextensão no banco romano",
+            "3 trabalho",
+            "12-15",
+            false
+          ],
+          [
+            "Rosca Scott máquina",
+            "2 ajuste + 3 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Abdominal supra na prancha",
+            "3 trabalho",
+            "Máx.",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "E",
+        "name": "Push 2",
+        "exercises": [
+          [
+            "Supino inclinado com halteres",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto com halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Cross over",
+            "1 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Desenvolvimento com halteres",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação frontal corda ou halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "2 ajuste + 2 trabalho + 1 drop set",
+            "8-12",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
+          ],
+          [
+            "Tríceps francês",
+            "2 ajuste + 3 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Panturrilha sentada",
+            "2 aquec. + 2 ajuste + 3 trabalho",
+            "8-12",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "F",
+        "name": "Legs 2",
+        "exercises": [
+          [
+            "Flexor deitado",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Flexor sentado",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Stiff",
+            "1 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação de quadril",
+            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2
+            }
+          ],
+          [
+            "Abdutor",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Extensor",
+            "1 aquec. + 2 ajuste + 2 trabalho + 1 drop set",
+            "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            }
           ]
         ]
       }
@@ -1156,693 +1758,256 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
     ]
   },
   {
-    "id": "female-advanced-3",
-    "name": "Feminino Avançado • 3× na semana",
+    "id": "pplul",
+    "name": "Push Pull Legs Upper Lower",
     "level": "Avançado",
-    "days": 3,
-    "note": "Quadríceps • superior • posterior e glúteos",
+    "days": 5,
+    "note": "Cinco estímulos • sem dias de descanso na lista",
     "workouts": [
       {
         "id": "A",
-        "name": "Quadríceps + glúteos + panturrilhas",
+        "name": "Pull • Puxar",
         "exercises": [
           [
-            "Agachamento livre ou smith",
-            "4 trabalho",
+            "Remada curvada",
+            "2 aquec. + 3 ajuste + 2 trabalho",
             "6-10",
             false,
             null,
             {
-              "workReps": [
-                "15-20",
-                "10-15",
-                "8-12",
-                "6-10"
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
               ]
-            }
-          ],
-          [
-            "Hack machine",
-            "3 trabalho + 2 rest-pause de 10s",
-            "8-12",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            },
-            {
-              "workReps": [
-                "10-15",
-                "8-12",
-                "8-12"
-              ]
-            }
-          ],
-          [
-            "Leg 45",
-            "3 trabalho + 10 repetições parciais após a falha",
-            "8-12",
-            false,
-            {
-              "kind": "partials",
-              "count": 1
-            },
-            {
-              "workReps": [
-                "10-15",
-                "8-12",
-                "8-12"
-              ]
-            }
-          ],
-          [
-            "Elevação de quadril com 2 segundos de pico de contração",
-            "3 trabalho + 1 rest-pause de 10s",
-            "10-15",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 1,
-              "seconds": 10
-            }
-          ],
-          [
-            "Abdutor com 2 segundos de pico de contração",
-            "5 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Panturrilha em pé na máquina ou smith com step",
-            "4 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            },
-            {
-              "workReps": [
-                "15-20",
-                "10-15",
-                "8-12",
-                "6-10"
-              ]
-            }
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Superior + abdômen",
-        "exercises": [
-          [
-            "Abdominal supra na prancha",
-            "3 trabalho",
-            "Máx.",
-            false
-          ],
-          [
-            "Pulley frente aberto com 2 segundos de pico de contração",
-            "4 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Remada baixa triângulo com 2 segundos de pico de contração",
-            "4 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Supino inclinado com halteres",
-            "4 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Elevação frontal sentado com halteres",
-            "4 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Elevação lateral sentada com halteres",
-            "4 trabalho + 10 repetições parciais após a falha",
-            "10-15",
-            false,
-            {
-              "kind": "partials",
-              "count": 1
-            }
-          ],
-          [
-            "Tríceps corda com 2 segundos de pico de contração",
-            "4 trabalho",
-            "10-15",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "C",
-        "name": "Posterior + glúteos",
-        "exercises": [
-          [
-            "Flexor deitado",
-            "4 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "workReps": [
-                "15-20",
-                "10-15",
-                "8-12",
-                "6-10"
-              ]
-            }
-          ],
-          [
-            "Flexor sentado com 2 segundos de pico de contração",
-            "3 trabalho + 2 rest-pause de 10s",
-            "8-12",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            },
-            {
-              "workReps": [
-                "15-20",
-                "10-15",
-                "8-12"
-              ]
-            }
-          ],
-          [
-            "Stiff",
-            "3 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Afundo no smith com step",
-            "3 trabalho",
-            "8-12",
-            true
-          ],
-          [
-            "Elevação de quadril",
-            "4 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            },
-            {
-              "workReps": [
-                "15-20",
-                "10-15",
-                "8-12",
-                "6-10"
-              ]
-            }
-          ],
-          [
-            "Abdutor com 3 segundos de pico de contração",
-            "5 trabalho",
-            "10-15",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "ppl-abc",
-    "name": "PPL ABC",
-    "level": "Avançado",
-    "days": 3,
-    "note": "Pull • Push • Legs com maior volume",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Costas + bíceps + abdômen",
-        "exercises": [
-          [
-            "Remada curvada com barra",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa triângulo",
-            "2 ajuste + 1 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
             }
           ],
           [
             "Remada baixa pegada aberta",
-            "1 ajuste + 2 trabalho",
+            "2 ajuste + 2 trabalho",
             "6-10",
-            false
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Serrote",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            true,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
+            }
           ],
           [
             "Pulley frente triângulo",
             "2 ajuste + 2 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Meio terra",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Rosca Scott máquina",
-            "2 ajuste + 3 trabalho + 2 rest-pause de 10s",
             "6-10",
             false,
+            null,
             {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
+              "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
             }
           ],
           [
-            "Abdominal infra na torre",
-            "3 trabalho",
-            "Máx.",
-            false
+            "Rosca direta cabo",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
+            }
           ]
         ]
       },
       {
         "id": "B",
-        "name": "Peito + ombros + tríceps + panturrilhas",
+        "name": "Push • Empurrar",
         "exercises": [
           [
-            "Supino inclinado com halteres",
-            "2 aquec. + 2 ajuste + 2 trabalho",
+            "Supino inclinado máquina ou halteres",
+            "2 aquec. + 3 ajuste + 2 trabalho",
             "6-10",
-            false
-          ],
-          [
-            "Supino reto com halteres",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino declinado barra ou máquina",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Voador com pico de contração",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "10-15",
             false,
+            null,
             {
-              "kind": "drop",
-              "count": 1
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
           ],
           [
-            "Elevação frontal corda ou halteres",
-            "1 ajuste + 2 trabalho",
+            "Supino reto máquina ou smith",
+            "3 ajuste + 2 trabalho",
             "6-10",
-            false
-          ],
-          [
-            "Elevação lateral sentada com halteres",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "8-12",
             false,
+            null,
             {
-              "kind": "drop",
-              "count": 1
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
           ],
           [
-            "Tríceps corda",
-            "2 ajuste + 3 trabalho + 2 rest-pause de 10s",
+            "Voador",
+            "3 ajuste + 2 trabalho",
             "6-10",
             false,
+            null,
             {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
           ],
           [
-            "Panturrilha máquina em pé",
-            "2 aquec. + 2 ajuste + 3 trabalho",
-            "8-12",
-            false
+            "Elevação lateral sentada",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Elevação lateral máquina ou cabo unilateral",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            true,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Tríceps na polia alta",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
           ]
         ]
       },
       {
         "id": "C",
-        "name": "Pernas + glúteos",
+        "name": "Legs • Pernas",
         "exercises": [
           [
-            "Extensor",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Hack machine",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "Flexor deitado",
+            "2 aquec. + 3 ajuste + 2 trabalho",
             "6-10",
             false,
+            null,
             {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Agachamento Hack",
+            "2 aquec. + 3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
           ],
           [
             "Leg 45",
-            "2 ajuste + 2 trabalho + 10 repetições parciais após a falha",
+            "3 ajuste + 2 trabalho",
             "6-10",
             false,
+            null,
             {
-              "kind": "partials",
-              "count": 1
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
           ],
           [
-            "Flexor deitado",
-            "1 aquec. + 2 ajuste + 1 trabalho + 2 rest-pause de 10s",
+            "Extensor",
+            "3 ajuste + 2 trabalho",
             "6-10",
             false,
+            null,
             {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
           ],
           [
             "Stiff",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação de quadril",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "abcd-adv",
-    "name": "ABCD Avançado",
-    "level": "Avançado",
-    "days": 4,
-    "note": "Maior volume • rest-pause e drop sets",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Peito + bíceps + abdômen",
-        "exercises": [
-          [
-            "Supino inclinado com halteres ou máquina",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino reto com halteres ou máquina",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "3 ajuste + 2 trabalho",
             "6-10",
             false,
+            null,
             {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
             }
-          ],
-          [
-            "Supino declinado barra ou máquina",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Voador com 2 segundos de pico de contração",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "10-15",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Rosca direta barra livre ou cabo com barra",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Rosca Scott máquina",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Rosca direta corda",
-            "1 ajuste + 2 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Abdominal supra na prancha declinada",
-            "3 trabalho",
-            "15-20",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Costas + panturrilhas",
-        "exercises": [
-          [
-            "Remada curvada com barra com 2 segundos de pico de contração",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa triângulo com 2 segundos de pico de contração",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa pegada aberta com 2 segundos de pico de contração",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Pulley frente triângulo com 2 segundos de pico de contração",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Meio terra",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Panturrilha máquina ou em pé no smith",
-            "1 aquec. + 2 ajuste + 3 trabalho",
-            "6-10",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "C",
-        "name": "Ombros + tríceps + abdômen",
-        "exercises": [
-          [
-            "Desenvolvimento halteres ou máquina",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação frontal corda ou halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Elevação lateral",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação unilateral cabo",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "10-15",
-            true,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Tríceps testa corda",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Tríceps corda",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Tríceps francês",
-            "1 ajuste + 2 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Abdominal infra na torre",
-            "3 trabalho",
-            "15-20",
-            false
           ]
         ]
       },
       {
         "id": "D",
-        "name": "Pernas + glúteos",
+        "name": "Upper • Superior",
         "exercises": [
           [
-            "Panturrilha sentada",
-            "1 aquec. + 2 ajuste + 3 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Agachamento livre",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Leg 45",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Extensor",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Flexor deitado com 2 segundos de pico de contração",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Stiff",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação de quadril com 2 segundos de pico de contração",
-            "1 aquec. + 2 ajuste + 3 trabalho",
-            "6-10",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "female-upper-lower-4",
-    "name": "Feminino Upper / Lower • 4×",
-    "level": "Avançado",
-    "days": 4,
-    "note": "Superior e inferior alternados • cargas progressivas",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Lower 1 • Inferior 1",
-        "exercises": [
-          [
-            "Flexor deitado",
+            "Supino reto máquina ou smith",
             "2 aquec. + 3 ajuste + 2 trabalho",
             "6-10",
             false,
@@ -1856,21 +2021,7 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
             }
           ],
           [
-            "Agachamento smith",
-            "2 aquec. + 3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Leg 45",
+            "Crucifixo inclinado no cabo",
             "3 ajuste + 2 trabalho",
             "6-10",
             false,
@@ -1882,98 +2033,9 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
                 "2-4"
               ]
             }
-          ],
-          [
-            "Extensor",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Stiff",
-            "3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Abdutor",
-            "3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Upper 1 • Superior 1",
-        "exercises": [
-          [
-            "Supino inclinado máquina ou halteres ou smith",
-            "2 aquec. + 1 ajuste + 2 trabalho",
-            "8-12",
-            false
           ],
           [
             "Pulley frente aberto",
-            "2 aquec. + 1 ajuste + 2 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Remada baixa triângulo",
-            "1 ajuste + 2 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Elevação lateral sentada",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Tríceps francês com corda",
-            "1 ajuste + 2 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Abdominal supra na prancha",
-            "3 trabalho",
-            "15-20",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "C",
-        "name": "Lower 2 • Inferior 2",
-        "exercises": [
-          [
-            "Flexor deitado",
             "2 aquec. + 3 ajuste + 2 trabalho",
             "6-10",
             false,
@@ -1987,13 +2049,87 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
             }
           ],
           [
-            "Flexor sentado",
+            "Remada baixa triângulo",
             "2 ajuste + 2 trabalho",
             "6-10",
             false,
             null,
             {
               "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Elevação lateral sentada",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Rosca direta banco 45 graus",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Tríceps francês com corda",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4"
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "id": "E",
+        "name": "Lower • Inferior",
+        "exercises": [
+          [
+            "Flexor sentado",
+            "2 aquec. + 3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Flexor deitado",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
                 "2-4",
                 "2-4"
               ]
@@ -2029,19 +2165,6 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
           ],
           [
             "Leg 45",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Abdutor",
             "3 ajuste + 2 trabalho",
             "6-10",
             false,
@@ -2053,48 +2176,6 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
                 "2-4"
               ]
             }
-          ]
-        ]
-      },
-      {
-        "id": "D",
-        "name": "Upper 2 • Superior 2",
-        "exercises": [
-          [
-            "Supino reto máquina ou halteres ou smith",
-            "2 aquec. + 1 ajuste + 2 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Remada curvada",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Pulley frente triângulo",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Desenvolvimento máquina ou halteres",
-            "2 ajuste + 2 trabalho",
-            "8-12",
-            false
-          ],
-          [
-            "Tríceps corda unilateral",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            true
-          ],
-          [
-            "Abdominal infra na torre",
-            "3 trabalho",
-            "15-20",
-            false
           ]
         ]
       }
@@ -2741,424 +2822,316 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
     ]
   },
   {
-    "id": "pplul",
-    "name": "Push Pull Legs Upper Lower",
-    "level": "Avançado",
-    "days": 5,
-    "note": "Cinco estímulos • sem dias de descanso na lista",
+    "id": "classic",
+    "name": "ABCDEF Classic Olympia",
+    "level": "Olympia",
+    "days": 6,
+    "note": "Ramon Dino e Menegate • 6 treinos do PDF",
     "workouts": [
       {
         "id": "A",
-        "name": "Pull • Puxar",
+        "name": "Costas + bíceps",
         "exercises": [
           [
-            "Remada curvada",
-            "2 aquec. + 3 ajuste + 2 trabalho",
+            "Remada curvada com 2 segundos de pico de contração",
+            "2 aquec. + 2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
-            "Remada baixa pegada aberta",
+            "Remada baixa triângulo com 2 segundos de pico de contração",
             "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
             "Serrote",
             "2 ajuste + 2 trabalho",
             "6-10",
-            true,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
-            }
+            true
           ],
           [
             "Pulley frente triângulo",
             "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
-            "Rosca direta cabo",
+            "Hiperextensão no banco romano",
             "2 ajuste + 2 trabalho",
             "6-10",
+            false
+          ],
+          [
+            "Rosca Scott máquina ou cabo",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
           ]
         ]
       },
       {
         "id": "B",
-        "name": "Push • Empurrar",
+        "name": "Peito + ombros + tríceps",
         "exercises": [
           [
             "Supino inclinado máquina ou halteres",
-            "2 aquec. + 3 ajuste + 2 trabalho",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto máquina ou halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
             "6-10",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
           ],
           [
-            "Supino reto máquina ou smith",
-            "3 ajuste + 2 trabalho",
+            "Supino declinado máquina, barra ou crossover",
+            "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
             "Voador",
-            "3 ajuste + 2 trabalho",
+            "2 ajuste + 2 trabalho + 2 drop sets",
             "6-10",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "drop",
+              "count": 2
             }
           ],
           [
-            "Elevação lateral sentada",
-            "3 ajuste + 2 trabalho",
+            "Elevação frontal com corda",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
             "6-10",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
           ],
           [
-            "Elevação lateral máquina ou cabo unilateral",
-            "3 ajuste + 2 trabalho",
+            "Tríceps corda",
+            "2 ajuste + 2 trabalho",
             "6-10",
-            true,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Tríceps na polia alta",
-            "3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ]
         ]
       },
       {
         "id": "C",
-        "name": "Legs • Pernas",
+        "name": "Pernas",
         "exercises": [
           [
-            "Flexor deitado",
-            "2 aquec. + 3 ajuste + 2 trabalho",
+            "Panturrilha sentada",
+            "2 aquec. + 2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
-            "Agachamento Hack",
-            "2 aquec. + 3 ajuste + 2 trabalho",
+            "Extensor",
+            "2 aquec. + 2 ajuste + 2 trabalho",
             "6-10",
+            false
+          ],
+          [
+            "Hack machine",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "8-12",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
           ],
           [
             "Leg 45",
-            "3 ajuste + 2 trabalho",
-            "6-10",
+            "2 ajuste + 2 trabalho + 10 parciais após a falha",
+            "10-15",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "partials",
+              "count": 10
             }
           ],
           [
-            "Extensor",
-            "3 ajuste + 2 trabalho",
+            "Flexor sentado",
+            "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
-            "Stiff",
-            "3 ajuste + 2 trabalho",
+            "Adutor",
+            "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ]
         ]
       },
       {
         "id": "D",
-        "name": "Upper • Superior",
+        "name": "Costas + bíceps",
         "exercises": [
           [
-            "Supino reto máquina ou smith",
-            "2 aquec. + 3 ajuste + 2 trabalho",
+            "Pulldown com corda",
+            "2 aquec. + 2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Crucifixo inclinado no cabo",
-            "3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
             "Pulley frente aberto",
-            "2 aquec. + 3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Remada baixa triângulo",
             "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
-            "Elevação lateral sentada",
-            "3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Rosca direta banco 45 graus",
+            "Remada baixa pegada aberta",
             "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
-            }
+            false
           ],
           [
-            "Tríceps francês com corda",
+            "Serrote",
             "2 ajuste + 2 trabalho",
             "6-10",
+            true
+          ],
+          [
+            "Hiperextensão no banco romano",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Rosca direta no cabo",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "6-10",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
           ]
         ]
       },
       {
         "id": "E",
-        "name": "Lower • Inferior",
+        "name": "Peito + ombros + tríceps",
         "exercises": [
           [
-            "Flexor sentado",
-            "2 aquec. + 3 ajuste + 2 trabalho",
+            "Supino inclinado máquina ou halteres",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Supino reto máquina ou halteres",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Voador",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação frontal com corda",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
             "6-10",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
+          ],
+          [
+            "Elevação lateral unilateral no cabo",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            true
+          ],
+          [
+            "Paralela peso do corpo",
+            "3 trabalho",
+            "Máx.",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "F",
+        "name": "Pernas",
+        "exercises": [
+          [
+            "Panturrilha em pé na máquina",
+            "2 aquec. + 2 ajuste + 2 trabalho",
+            "6-10",
+            false
           ],
           [
             "Flexor deitado",
-            "3 ajuste + 2 trabalho",
+            "2 aquec. + 2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
+          ],
+          [
+            "Stiff",
+            "2 ajuste + 2 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Abdutor",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false
           ],
           [
             "Elevação de quadril",
-            "2 aquec. + 3 ajuste + 2 trabalho",
-            "6-10",
+            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
+            "8-12",
             false,
-            null,
             {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
             }
           ],
           [
-            "Hack",
-            "3 ajuste + 2 trabalho",
+            "Extensor",
+            "2 ajuste + 2 trabalho",
             "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
-          ],
-          [
-            "Leg 45",
-            "3 ajuste + 2 trabalho",
-            "6-10",
-            false,
-            null,
-            {
-              "adjustReps": [
-                "4-6",
-                "2-4",
-                "2-4"
-              ]
-            }
+            false
           ]
         ]
       }
@@ -3552,166 +3525,363 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
     ]
   },
   {
-    "id": "ppl-6",
-    "name": "PPL ABC/DEF",
-    "level": "Avançado",
-    "days": 6,
-    "note": "ABC • descanso • DEF",
+    "id": "female-ab-2",
+    "name": "Feminino AB • 2× na semana",
+    "level": "Iniciante",
+    "days": 2,
+    "note": "Corpo inteiro • base técnica e adaptação",
     "workouts": [
       {
         "id": "A",
-        "name": "Pull 1",
+        "name": "Corpo inteiro 1",
         "exercises": [
           [
-            "Remada curvada com barra",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
+            "Leg 45",
+            "3 trabalho",
+            "10-15",
             false
           ],
           [
-            "Remada baixa triângulo",
-            "2 ajuste + 1 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
+            "Supino reto barra",
+            "3 trabalho",
+            "10-15",
+            false
           ],
           [
-            "Remada baixa pegada aberta",
-            "1 ajuste + 2 trabalho",
-            "6-10",
+            "Flexor sentado",
+            "3 trabalho",
+            "10-15",
             false
           ],
           [
             "Pulley frente triângulo",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Meio terra",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
+            "3 trabalho",
+            "10-15",
             false
           ],
           [
-            "Rosca Scott máquina",
-            "2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
+            "Adutor",
+            "3 trabalho",
+            "10-15",
+            false
           ],
           [
-            "Abdominal infra na torre",
+            "Elevação lateral",
             "3 trabalho",
-            "Máx.",
+            "10-15",
+            false
+          ],
+          [
+            "Abdutor",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Tríceps corda",
+            "3 trabalho",
+            "10-15",
             false
           ]
         ]
       },
       {
         "id": "B",
-        "name": "Push 1",
+        "name": "Corpo inteiro 2",
         "exercises": [
           [
-            "Supino inclinado com halteres",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino reto com halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Supino declinado barra ou máquina",
-            "1 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Voador com pico de contração",
-            "2 ajuste + 2 trabalho + 1 drop set",
+            "Extensor",
+            "3 trabalho",
             "10-15",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Elevação frontal corda ou halteres",
-            "1 ajuste + 2 trabalho",
-            "6-10",
             false
           ],
           [
-            "Elevação lateral sentada com halteres",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "8-12",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
+            "Voador",
+            "3 trabalho",
+            "10-15",
+            false
           ],
           [
-            "Tríceps corda",
-            "2 ajuste + 3 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
+            "Flexor deitado",
+            "3 trabalho",
+            "10-15",
+            false
           ],
           [
-            "Panturrilha máquina em pé",
-            "2 aquec. + 2 ajuste + 3 trabalho",
-            "8-12",
+            "Remada baixa triângulo",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Adutor",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Elevação frontal",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Abdutor",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Panturrilha em pé na máquina",
+            "3 trabalho",
+            "10-15",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "female-ab-4",
+    "name": "Feminino AB • 4× na semana",
+    "level": "Iniciante",
+    "days": 4,
+    "note": "AB repetido • volume moderado e execução simples",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Pernas + abdômen",
+        "exercises": [
+          [
+            "Leg 45",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Extensor",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Flexor sentado",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Flexor deitado",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Abdutor",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Adutor",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Abdominal supra no solo",
+            "3 trabalho",
+            "15-20",
             false
           ]
         ]
       },
       {
-        "id": "C",
-        "name": "Legs 1",
+        "id": "B",
+        "name": "Superior + panturrilhas",
         "exercises": [
           [
-            "Extensor",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
+            "Supino inclinado barra",
+            "3 trabalho",
+            "10-15",
             false
           ],
           [
-            "Hack machine",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
+            "Pulley frente aberto",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Remada baixa triângulo",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Desenvolvimento sentado com halteres",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Elevação lateral",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Tríceps corda",
+            "3 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Panturrilha em pé na máquina ou no smith com step",
+            "3 trabalho",
+            "10-15",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "female-advanced-3",
+    "name": "Feminino Avançado • 3× na semana",
+    "level": "Avançado",
+    "days": 3,
+    "note": "Quadríceps • superior • posterior e glúteos",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Quadríceps + glúteos + panturrilhas",
+        "exercises": [
+          [
+            "Agachamento livre ou smith",
+            "4 trabalho",
             "6-10",
+            false,
+            null,
+            {
+              "workReps": [
+                "15-20",
+                "10-15",
+                "8-12",
+                "6-10"
+              ]
+            }
+          ],
+          [
+            "Hack machine",
+            "3 trabalho + 2 rest-pause de 10s",
+            "8-12",
             false,
             {
               "kind": "rest-pause",
-              "count": 2
+              "count": 2,
+              "seconds": 10
+            },
+            {
+              "workReps": [
+                "10-15",
+                "8-12",
+                "8-12"
+              ]
             }
           ],
           [
             "Leg 45",
-            "2 ajuste + 2 trabalho + 10 repetições parciais",
+            "3 trabalho + 10 repetições parciais após a falha",
+            "8-12",
+            false,
+            {
+              "kind": "partials",
+              "count": 1
+            },
+            {
+              "workReps": [
+                "10-15",
+                "8-12",
+                "8-12"
+              ]
+            }
+          ],
+          [
+            "Elevação de quadril com 2 segundos de pico de contração",
+            "3 trabalho + 1 rest-pause de 10s",
+            "10-15",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 1,
+              "seconds": 10
+            }
+          ],
+          [
+            "Abdutor com 2 segundos de pico de contração",
+            "5 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Panturrilha em pé na máquina ou smith com step",
+            "4 trabalho + 1 drop set",
             "6-10",
+            false,
+            {
+              "kind": "drop",
+              "count": 1
+            },
+            {
+              "workReps": [
+                "15-20",
+                "10-15",
+                "8-12",
+                "6-10"
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Superior + abdômen",
+        "exercises": [
+          [
+            "Abdominal supra na prancha",
+            "3 trabalho",
+            "Máx.",
+            false
+          ],
+          [
+            "Pulley frente aberto com 2 segundos de pico de contração",
+            "4 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Remada baixa triângulo com 2 segundos de pico de contração",
+            "4 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Supino inclinado com halteres",
+            "4 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Elevação frontal sentado com halteres",
+            "4 trabalho",
+            "10-15",
+            false
+          ],
+          [
+            "Elevação lateral sentada com halteres",
+            "4 trabalho + 10 repetições parciais após a falha",
+            "10-15",
             false,
             {
               "kind": "partials",
@@ -3719,210 +3889,356 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
             }
           ],
           [
+            "Tríceps corda com 2 segundos de pico de contração",
+            "4 trabalho",
+            "10-15",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Posterior + glúteos",
+        "exercises": [
+          [
             "Flexor deitado",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
+            "4 trabalho",
             "6-10",
+            false,
+            null,
+            {
+              "workReps": [
+                "15-20",
+                "10-15",
+                "8-12",
+                "6-10"
+              ]
+            }
+          ],
+          [
+            "Flexor sentado com 2 segundos de pico de contração",
+            "3 trabalho + 2 rest-pause de 10s",
+            "8-12",
             false,
             {
               "kind": "rest-pause",
-              "count": 2
+              "count": 2,
+              "seconds": 10
+            },
+            {
+              "workReps": [
+                "15-20",
+                "10-15",
+                "8-12"
+              ]
             }
           ],
           [
             "Stiff",
-            "1 aquec. + 2 ajuste + 2 trabalho",
+            "3 trabalho",
+            "8-12",
+            false
+          ],
+          [
+            "Afundo no smith com step",
+            "3 trabalho",
+            "8-12",
+            true
+          ],
+          [
+            "Elevação de quadril",
+            "4 trabalho + 2 rest-pause de 10s",
+            "6-10",
+            false,
+            {
+              "kind": "rest-pause",
+              "count": 2,
+              "seconds": 10
+            },
+            {
+              "workReps": [
+                "15-20",
+                "10-15",
+                "8-12",
+                "6-10"
+              ]
+            }
+          ],
+          [
+            "Abdutor com 3 segundos de pico de contração",
+            "5 trabalho",
+            "10-15",
+            false
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "female-upper-lower-4",
+    "name": "Feminino Upper / Lower • 4×",
+    "level": "Avançado",
+    "days": 4,
+    "note": "Superior e inferior alternados • cargas progressivas",
+    "workouts": [
+      {
+        "id": "A",
+        "name": "Lower 1 • Inferior 1",
+        "exercises": [
+          [
+            "Flexor deitado",
+            "2 aquec. + 3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Agachamento smith",
+            "2 aquec. + 3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Leg 45",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Extensor",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Stiff",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Abdutor",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Upper 1 • Superior 1",
+        "exercises": [
+          [
+            "Supino inclinado máquina ou halteres ou smith",
+            "2 aquec. + 1 ajuste + 2 trabalho",
+            "8-12",
+            false
+          ],
+          [
+            "Pulley frente aberto",
+            "2 aquec. + 1 ajuste + 2 trabalho",
+            "8-12",
+            false
+          ],
+          [
+            "Remada baixa triângulo",
+            "1 ajuste + 2 trabalho",
+            "8-12",
+            false
+          ],
+          [
+            "Elevação lateral sentada",
+            "2 ajuste + 2 trabalho",
             "6-10",
             false
           ],
           [
-            "Elevação de quadril",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
+            "Tríceps francês com corda",
+            "1 ajuste + 2 trabalho",
+            "8-12",
             false
+          ],
+          [
+            "Abdominal supra na prancha",
+            "3 trabalho",
+            "15-20",
+            false
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Lower 2 • Inferior 2",
+        "exercises": [
+          [
+            "Flexor deitado",
+            "2 aquec. + 3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Flexor sentado",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Elevação de quadril",
+            "2 aquec. + 3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Hack",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Leg 45",
+            "2 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "2-4",
+                "2-4"
+              ]
+            }
+          ],
+          [
+            "Abdutor",
+            "3 ajuste + 2 trabalho",
+            "6-10",
+            false,
+            null,
+            {
+              "adjustReps": [
+                "4-6",
+                "2-4",
+                "2-4"
+              ]
+            }
           ]
         ]
       },
       {
         "id": "D",
-        "name": "Pull 2",
+        "name": "Upper 2 • Superior 2",
         "exercises": [
           [
-            "Remada curvada com barra",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
+            "Supino reto máquina ou halteres ou smith",
+            "2 aquec. + 1 ajuste + 2 trabalho",
+            "8-12",
             false
           ],
           [
-            "Remada baixa pegada aberta",
-            "2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Pulley frente aberto",
-            "2 ajuste + 2 trabalho",
+            "Remada curvada",
+            "2 aquec. + 2 ajuste + 2 trabalho",
             "8-12",
             false
           ],
           [
             "Pulley frente triângulo",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Hiperextensão no banco romano",
-            "3 trabalho",
-            "12-15",
-            false
-          ],
-          [
-            "Rosca Scott máquina",
-            "2 ajuste + 3 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Abdominal supra na prancha",
-            "3 trabalho",
-            "Máx.",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "E",
-        "name": "Push 2",
-        "exercises": [
-          [
-            "Supino inclinado com halteres",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino reto com halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Cross over",
             "1 ajuste + 2 trabalho",
             "6-10",
             false
           ],
           [
-            "Desenvolvimento com halteres",
+            "Desenvolvimento máquina ou halteres",
             "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação frontal corda ou halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Elevação lateral sentada com halteres",
-            "2 ajuste + 2 trabalho + 1 drop set",
-            "8-12",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
-          ],
-          [
-            "Tríceps francês",
-            "2 ajuste + 3 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Panturrilha sentada",
-            "2 aquec. + 2 ajuste + 3 trabalho",
             "8-12",
             false
-          ]
-        ]
-      },
-      {
-        "id": "F",
-        "name": "Legs 2",
-        "exercises": [
+          ],
           [
-            "Flexor deitado",
-            "2 aquec. + 2 ajuste + 2 trabalho",
+            "Tríceps corda unilateral",
+            "1 ajuste + 2 trabalho",
             "6-10",
+            true
+          ],
+          [
+            "Abdominal infra na torre",
+            "3 trabalho",
+            "15-20",
             false
-          ],
-          [
-            "Flexor sentado",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Stiff",
-            "1 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação de quadril",
-            "1 aquec. + 2 ajuste + 2 trabalho + 2 rest-pause",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2
-            }
-          ],
-          [
-            "Abdutor",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Extensor",
-            "1 aquec. + 2 ajuste + 2 trabalho + 1 drop set",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 1
-            }
           ]
         ]
       }
@@ -4165,322 +4481,6 @@ export const DEFAULT_PLANS: WorkoutPlanRaw[] = [
             "Abdominal infra na torre",
             "3 trabalho",
             "15-20",
-            false
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "id": "classic",
-    "name": "ABCDEF Classic Olympia",
-    "level": "Olympia",
-    "days": 6,
-    "note": "Ramon Dino e Menegate • 6 treinos do PDF",
-    "workouts": [
-      {
-        "id": "A",
-        "name": "Costas + bíceps",
-        "exercises": [
-          [
-            "Remada curvada com 2 segundos de pico de contração",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa triângulo com 2 segundos de pico de contração",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Serrote",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            true
-          ],
-          [
-            "Pulley frente triângulo",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Hiperextensão no banco romano",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Rosca Scott máquina ou cabo",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ]
-        ]
-      },
-      {
-        "id": "B",
-        "name": "Peito + ombros + tríceps",
-        "exercises": [
-          [
-            "Supino inclinado máquina ou halteres",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino reto máquina ou halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Supino declinado máquina, barra ou crossover",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Voador",
-            "2 ajuste + 2 trabalho + 2 drop sets",
-            "6-10",
-            false,
-            {
-              "kind": "drop",
-              "count": 2
-            }
-          ],
-          [
-            "Elevação frontal com corda",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação lateral sentada com halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Tríceps corda",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "C",
-        "name": "Pernas",
-        "exercises": [
-          [
-            "Panturrilha sentada",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Extensor",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Hack machine",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "8-12",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Leg 45",
-            "2 ajuste + 2 trabalho + 10 parciais após a falha",
-            "10-15",
-            false,
-            {
-              "kind": "partials",
-              "count": 10
-            }
-          ],
-          [
-            "Flexor sentado",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Adutor",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "D",
-        "name": "Costas + bíceps",
-        "exercises": [
-          [
-            "Pulldown com corda",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Pulley frente aberto",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Remada baixa pegada aberta",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Serrote",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            true
-          ],
-          [
-            "Hiperextensão no banco romano",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Rosca direta no cabo",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ]
-        ]
-      },
-      {
-        "id": "E",
-        "name": "Peito + ombros + tríceps",
-        "exercises": [
-          [
-            "Supino inclinado máquina ou halteres",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Supino reto máquina ou halteres",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Voador",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação frontal com corda",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação lateral sentada com halteres",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "6-10",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Elevação lateral unilateral no cabo",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            true
-          ],
-          [
-            "Paralela peso do corpo",
-            "3 trabalho",
-            "Máx.",
-            false
-          ]
-        ]
-      },
-      {
-        "id": "F",
-        "name": "Pernas",
-        "exercises": [
-          [
-            "Panturrilha em pé na máquina",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Flexor deitado",
-            "2 aquec. + 2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Stiff",
-            "2 ajuste + 2 trabalho",
-            "10-15",
-            false
-          ],
-          [
-            "Abdutor",
-            "2 ajuste + 2 trabalho",
-            "6-10",
-            false
-          ],
-          [
-            "Elevação de quadril",
-            "2 ajuste + 2 trabalho + 2 rest-pause de 10s",
-            "8-12",
-            false,
-            {
-              "kind": "rest-pause",
-              "count": 2,
-              "seconds": 10
-            }
-          ],
-          [
-            "Extensor",
-            "2 ajuste + 2 trabalho",
-            "6-10",
             false
           ]
         ]

@@ -40,6 +40,7 @@ demos_extracted.json
 /anatomy-base-hq.png
 /anatomy-masks/
 apk-download/
+scratch/
 
 # Ensure public anatomy assets are always included
 !public/anatomy-base-hq.png

@@ -49,7 +49,7 @@ export const PlansTab: React.FC<Props> = ({ onPlanChanged }) => {
     const rB = LEVEL_RANK[b.level] || 99;
     if (rA !== rB) return rA - rB;
     if (a.days !== b.days) return a.days - b.days;
-    return a.name.localeCompare(b.name);
+    return 0;
   });
 
   const filteredPlans = sortedPlans.filter(p => {

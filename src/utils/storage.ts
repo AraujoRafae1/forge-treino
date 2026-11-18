@@ -70,17 +70,39 @@ export function getAllPlans(): WorkoutPlanRaw[] {
 }
 
 export function getCurrentPlanId(): string {
-  return safeGet<string>(KEYS.CURRENT_PLAN_ID, 'abcd-int');
+  if (typeof window !== 'undefined') {
+    try {
+      const v1 = localStorage.getItem(KEYS.CURRENT_PLAN_ID);
+      if (v1) {
+        const parsed = JSON.parse(v1);
+        if (parsed) return parsed;
+      }
+      const v2 = localStorage.getItem('forge-plan');
+      if (v2) {
+        try {
+          return JSON.parse(v2);
+        } catch {
+          return v2;
+        }
+      }
+    } catch {}
+  }
+  return 'abcd-int';
 }
 
 export function setCurrentPlanId(id: string): void {
   safeSet(KEYS.CURRENT_PLAN_ID, id);
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.setItem('forge-plan', JSON.stringify(id));
+    } catch {}
+  }
 }
 
 export function getActivePlan(): WorkoutPlanRaw {
   const plans = getAllPlans();
   const id = getCurrentPlanId();
-  return plans.find(p => p.id === id) || plans[0] || DEFAULT_PLANS[0];
+  return plans.find(p => p.id === id) || plans.find(p => p.id === 'abcd-int') || plans[0] || DEFAULT_PLANS[0];
 }
 
 export function saveCustomPlan(plan: WorkoutPlanRaw): void {

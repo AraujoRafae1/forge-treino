@@ -13,6 +13,7 @@ import {
   getSavedWeight, 
   saveActiveWorkout 
 } from './utils/storage';
+import { parseSeriesForExercise } from './utils/workoutParser';
 import { applyTheme } from './utils/theme';
 import { EXERCISE_CATALOG, detectMuscleFromName, MUSCLE_LABELS } from './data/exerciseCatalog';
 import { HomeTab } from './components/HomeTab';
@@ -67,127 +68,41 @@ export function App() {
 
     const exercises: ActiveExerciseSession[] = targetWorkout.exercises.map((raw, idx) => {
       const name = raw[0];
-      const desc = raw[1];
-      const targetReps = raw[2] || '8-12';
-      const tech = raw[4];
-
+      const isUnilateral = Boolean(raw[3]);
       const catalogEntry = EXERCISE_CATALOG.find(e => e.name.toLowerCase() === name.toLowerCase());
       const savedWeight = getSavedWeight(name) || 0;
 
-      const sets: WorkoutSet[] = [];
-      let setNum = 1;
+      const parsedSeries = parseSeriesForExercise(
+        raw, 
+        settings.standardRestSeconds || 90, 
+        settings.restPauseSeconds || 10
+      );
 
-      if (/aquec/i.test(desc)) {
-        sets.push({
-          id: `set_${idx}_${setNum}`,
-          number: setNum++,
-          type: 'warmup',
-          label: 'Aquec.',
-          targetReps: '12-15',
-          weight: Math.round(savedWeight * 0.5),
-          reps: 12,
-          completed: false,
-          prevWeight: savedWeight
-        });
-      }
-
-      if (/ajuste/i.test(desc)) {
-        sets.push({
-          id: `set_${idx}_${setNum}`,
-          number: setNum++,
-          type: 'feeder',
-          label: 'Ajuste',
-          targetReps: '4-6',
-          weight: Math.round(savedWeight * 0.75),
-          reps: 6,
-          completed: false,
-          prevWeight: savedWeight
-        });
-      }
-
-      const workSetsCount = tech?.kind === 'rest-pause' ? 1 : 2;
-      for (let i = 0; i < workSetsCount; i++) {
-        sets.push({
-          id: `set_${idx}_${setNum}`,
-          number: setNum++,
-          type: 'work',
-          label: 'Trabalho',
-          targetReps: targetReps,
-          weight: savedWeight,
-          reps: 8,
-          completed: false,
-          prevWeight: savedWeight
-        });
-      }
-
-      if (tech?.kind === 'rest-pause') {
-        const rpCount = tech.count || 2;
-        for (let i = 0; i < rpCount; i++) {
-          sets.push({
-            id: `set_${idx}_${setNum}`,
-            number: setNum++,
-            type: 'rest-pause',
-            label: `RP ${tech.seconds || settings.restPauseSeconds}s`,
-            targetReps: 'Falha (3-5)',
-            weight: savedWeight,
-            reps: 4,
-            completed: false,
-            prevWeight: savedWeight
-          });
+      const sets: WorkoutSet[] = parsedSeries.map((s, sIdx) => {
+        let defaultReps = 10;
+        if (s.reps && s.reps !== 'Máx.') {
+          const m = s.reps.match(/\d+/);
+          if (m) defaultReps = parseInt(m[0], 10);
         }
-      }
 
-      if (tech?.kind === 'drop') {
-        sets.push({
-          id: `set_${idx}_${setNum}`,
-          number: setNum++,
-          type: 'drop',
-          label: 'Drop Set',
-          targetReps: 'Falha',
-          weight: Math.round(savedWeight * 0.7),
-          reps: 8,
+        const suggestedWeight = Math.round(savedWeight * s.factor);
+
+        return {
+          id: `set_${idx}_${sIdx + 1}`,
+          number: sIdx + 1,
+          type: s.category,
+          label: s.type,
+          targetReps: s.reps,
+          weight: suggestedWeight,
+          reps: defaultReps,
           completed: false,
-          prevWeight: savedWeight
-        });
-      }
-
-      if (sets.length === 0) {
-        sets.push(
-          {
-            id: `set_${idx}_1`,
-            number: 1,
-            type: 'warmup',
-            label: 'Aquec.',
-            targetReps: '12-15',
-            weight: Math.round(savedWeight * 0.5),
-            reps: 15,
-            completed: false,
-            prevWeight: savedWeight
-          },
-          {
-            id: `set_${idx}_2`,
-            number: 2,
-            type: 'work',
-            label: 'Trabalho',
-            targetReps: targetReps,
-            weight: savedWeight,
-            reps: 10,
-            completed: false,
-            prevWeight: savedWeight
-          },
-          {
-            id: `set_${idx}_3`,
-            number: 3,
-            type: 'work',
-            label: 'Trabalho',
-            targetReps: targetReps,
-            weight: savedWeight,
-            reps: 10,
-            completed: false,
-            prevWeight: savedWeight
-          }
-        );
-      }
+          prevWeight: savedWeight,
+          restSeconds: s.rest,
+          technique: s.technique,
+          factor: s.factor,
+          side: isUnilateral ? 'E' : null
+        };
+      });
 
       const detectedMuscle = catalogEntry?.muscle || detectMuscleFromName(name);
       return {

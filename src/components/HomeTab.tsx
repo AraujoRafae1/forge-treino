@@ -8,10 +8,12 @@ import {
 import { MuscleAnatomyCard } from './MuscleAnatomyCard';
 import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 import { getWorkoutHistory } from '../utils/storage';
+import { parseSeriesForExercise } from '../utils/workoutParser';
 import { 
   Play, 
   Dumbbell, 
   Clock, 
+  Layers,
   X,
   Video,
   Trash2
@@ -134,94 +136,151 @@ export const HomeTab: React.FC<Props> = ({
       </div>
 
       {/* CARD DO TREINO SELECIONADO */}
-      {currentWorkout && (
-        <div className="bg-card border border-app rounded-2xl p-5 shadow-xl space-y-4">
-          <div className="flex items-start justify-between">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-subtle text-brand">
-                Próxima Sessão
+      {currentWorkout && (() => {
+        const totalWorkoutSets = currentWorkout.exercises.reduce(
+          (acc, raw) => acc + parseSeriesForExercise(raw).length, 
+          0
+        );
+
+        return (
+          <div className="bg-card border border-app rounded-2xl p-5 shadow-xl space-y-4">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-subtle text-brand">
+                  Próxima Sessão
+                </span>
+                <h2 className="text-lg font-black text-white mt-1">
+                  Treino {currentWorkout.id} • {currentWorkout.name}
+                </h2>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400 mt-1">
+                  <span className="flex items-center gap-1">
+                    <Dumbbell className="w-3.5 h-3.5 text-brand" />
+                    {currentWorkout.exercises.length} exercícios
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1 text-brand font-semibold">
+                    <Layers className="w-3.5 h-3.5 text-brand" />
+                    {totalWorkoutSets} séries
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-brand" />
+                    Descanso: {standardRestSeconds}s
+                  </span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => onStartWorkout(currentWorkout.id)}
+                className="px-5 py-3 rounded-xl bg-brand hover:bg-brand-hover text-black font-extrabold text-sm flex items-center gap-2 shadow-brand active:scale-95 transition-all shrink-0"
+              >
+                <Play className="w-4 h-4 fill-current" />
+                <span>Iniciar</span>
+              </button>
+            </div>
+
+            {/* LISTA RESUMIDA DOS EXERCÍCIOS DESTE TREINO */}
+            <div className="border-t border-app pt-3 space-y-2.5">
+              <span className="text-[11px] font-semibold text-gray-400 block">
+                Sequência prescrita original ({currentWorkout.exercises.length} exercícios • {totalWorkoutSets} séries):
               </span>
-              <h2 className="text-lg font-black text-white mt-1">
-                Treino {currentWorkout.id} • {currentWorkout.name}
-              </h2>
-              <div className="flex items-center gap-3 text-xs text-gray-400 mt-1">
-                <span className="flex items-center gap-1">
-                  <Dumbbell className="w-3.5 h-3.5 text-brand" />
-                  {currentWorkout.exercises.length} exercícios
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-brand" />
-                  ~50 min
-                </span>
-                <span>•</span>
-                <span>Descanso: {standardRestSeconds}s</span>
+
+              <div className="space-y-2">
+                {currentWorkout.exercises.map((raw, idx) => {
+                  const name = raw[0];
+                  const desc = raw[1];
+                  const reps = raw[2];
+                  const isUnilateral = Boolean(raw[3]);
+                  const catalogEntry = EXERCISE_CATALOG.find(e => e.name.toLowerCase() === name.toLowerCase());
+                  const parsedSets = parseSeriesForExercise(raw, standardRestSeconds);
+
+                  return (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-xl bg-card-subtle border border-app text-xs space-y-1.5"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="truncate flex items-center gap-1.5">
+                          <span className="font-bold text-gray-100 truncate text-sm">
+                            {idx + 1}. {name}
+                          </span>
+                          {isUnilateral && (
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold shrink-0">
+                              Unilateral
+                            </span>
+                          )}
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-elevated text-gray-400 font-semibold shrink-0">
+                            {parsedSets.length} séries
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          {/* BOTÃO PARA VISUALIZAR GIF DO EXERCÍCIO */}
+                          {catalogEntry?.demoUrl && (
+                            <button
+                              type="button"
+                              onClick={() => setPreviewDemo({ name, url: catalogEntry.demoUrl! })}
+                              className="px-2 py-1 rounded-lg bg-elevated hover:bg-[var(--bg-hover)] text-brand flex items-center gap-1 text-[11px] font-semibold border border-app transition-colors"
+                              title="Ver demonstração em GIF"
+                            >
+                              <Play className="w-2.5 h-2.5 fill-current" />
+                              <span>GIF</span>
+                            </button>
+                          )}
+
+                          {catalogEntry?.movementLabel && (
+                            <span className="text-[10px] px-2 py-0.5 rounded bg-elevated text-gray-300">
+                              {catalogEntry.movementLabel}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="text-[11px] text-gray-400 font-medium">
+                        {desc.replace(/1-2/g, '2')} • <span className="text-gray-300">alvo: {reps} reps</span>
+                      </div>
+
+                      {/* CHIPS DE DETALHAMENTO DE SÉRIES (IGUAL AO ORIGINAL) */}
+                      <div className="flex flex-wrap gap-1 pt-0.5">
+                        {parsedSets.map((s, sIdx) => {
+                          const isWarm = s.category === 'warmup';
+                          const isFeeder = s.category === 'feeder';
+                          const isWork = s.category === 'work';
+                          const isRP = s.category === 'rest-pause';
+                          const isDrop = s.category === 'drop';
+
+                          const badgeStyle = isWarm
+                            ? 'bg-elevated text-gray-400 border-gray-700/50'
+                            : isFeeder
+                            ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                            : isWork
+                            ? 'bg-brand-subtle text-brand border-brand-solid/40'
+                            : isRP
+                            ? 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                            : isDrop
+                            ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                            : 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+
+                          return (
+                            <span 
+                              key={sIdx} 
+                              className={`text-[10px] px-2 py-0.5 rounded-md border font-medium ${badgeStyle}`}
+                            >
+                              <b className="mr-1">{s.type}</b>
+                              {s.reps} reps
+                              {s.technique && <span className="opacity-80"> • {s.technique}</span>}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-
-            <button
-              onClick={() => onStartWorkout(currentWorkout.id)}
-              className="px-5 py-3 rounded-xl bg-brand hover:bg-brand-hover text-black font-extrabold text-sm flex items-center gap-2 shadow-brand active:scale-95 transition-all shrink-0"
-            >
-              <Play className="w-4 h-4 fill-current" />
-              <span>Iniciar</span>
-            </button>
           </div>
-
-          {/* LISTA RESUMIDA DOS EXERCÍCIOS DESTE TREINO */}
-          <div className="border-t border-app pt-3 space-y-2">
-            <span className="text-[11px] font-semibold text-gray-400 block">
-              Sequência prescrita:
-            </span>
-
-            <div className="space-y-1.5">
-              {currentWorkout.exercises.map((raw, idx) => {
-                const name = raw[0];
-                const desc = raw[1];
-                const reps = raw[2];
-                const catalogEntry = EXERCISE_CATALOG.find(e => e.name.toLowerCase() === name.toLowerCase());
-
-                return (
-                  <div
-                    key={idx}
-                    className="flex items-center justify-between p-2.5 rounded-xl bg-card-subtle border border-app text-xs"
-                  >
-                    <div className="truncate pr-2">
-                      <span className="font-semibold text-gray-200 block truncate">
-                        {idx + 1}. {name}
-                      </span>
-                      <span className="text-[11px] text-gray-400 truncate block">
-                        {desc} • {reps} reps
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      {/* BOTÃO PARA VISUALIZAR GIF DO EXERCÍCIO */}
-                      {catalogEntry?.demoUrl && (
-                        <button
-                          type="button"
-                          onClick={() => setPreviewDemo({ name, url: catalogEntry.demoUrl! })}
-                          className="px-2 py-1 rounded-lg bg-elevated hover:bg-[var(--bg-hover)] text-brand flex items-center gap-1 text-[11px] font-semibold border border-app transition-colors"
-                          title="Ver demonstração em GIF"
-                        >
-                          <Play className="w-2.5 h-2.5 fill-current" />
-                          <span>GIF</span>
-                        </button>
-                      )}
-
-                      {catalogEntry?.movementLabel && (
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-elevated text-gray-300">
-                          {catalogEntry.movementLabel}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* HISTÓRICO RÁPIDO DE TREINOS / SÉRIES / QUANTAS VEZES NA SEMANA (IGUAL AO PRINT DO USUÁRIO) */}
       <div className="grid grid-cols-3 gap-2.5">

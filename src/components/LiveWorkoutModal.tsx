@@ -216,7 +216,12 @@ export const LiveWorkoutModal: React.FC<Props> = ({
     saveActiveWorkout(updated);
 
     if (willComplete) {
-      startRestTimer(exercises[exerciseIndex].currentName, exerciseIndex, setIndex);
+      const targetRest = targetSet.restSeconds !== undefined 
+        ? targetSet.restSeconds 
+        : (targetSet.type === 'warmup' ? 60 : (standardRestSeconds || 90));
+      if (targetRest > 0) {
+        startRestTimer(exercises[exerciseIndex].currentName, exerciseIndex, setIndex, targetRest);
+      }
     }
   };
 
@@ -628,7 +633,10 @@ export const LiveWorkoutModal: React.FC<Props> = ({
                   >
                     <div className="col-span-2 flex flex-col items-center">
                       <span className="font-bold text-xs text-white">#{set.number}</span>
-                      <span className="text-[9px] text-gray-400">{set.label}</span>
+                      <span className="text-[9px] text-gray-400 font-semibold">{set.label}</span>
+                      {set.technique && (
+                        <span className="text-[8px] text-brand font-bold leading-none mt-0.5">{set.technique}</span>
+                      )}
                     </div>
 
                     <div className="col-span-2 text-center text-[11px] text-gray-400">
@@ -668,7 +676,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
                         type="number"
                         min="0"
                         value={set.reps || ''}
-                        placeholder="0"
+                        placeholder={set.targetReps || '0'}
                         onChange={e => updateSetValue(exIdx, setIdx, 'reps', parseInt(e.target.value, 10) || 0)}
                         className="w-11 text-center py-1 text-sm font-bold bg-app border border-app rounded-lg text-white focus:outline-none focus:border-brand-solid"
                       />
