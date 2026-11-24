@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ActiveWorkoutSession, 
   MuscleGroup, 
@@ -8,7 +8,11 @@ import {
 import { MuscleAnatomyCard } from './MuscleAnatomyCard';
 import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 import { getWorkoutHistory } from '../utils/storage';
-import { parseSeriesForExercise } from '../utils/workoutParser';
+import { 
+  parseSeriesForExercise, 
+  calculateWorkoutElapsedSeconds, 
+  formatWorkoutTime 
+} from '../utils/workoutParser';
 import { 
   Play, 
   Dumbbell, 
@@ -48,6 +52,33 @@ export const HomeTab: React.FC<Props> = ({
 
   const currentWorkout = plan.workouts[selectedWorkoutIndex] || plan.workouts[0];
 
+  const [homeElapsed, setHomeElapsed] = useState<number>(() => calculateWorkoutElapsedSeconds(activeWorkout));
+
+  // Mantém o cronômetro do banner da tela inicial sincronizado mesmo ao voltar do segundo plano
+  useEffect(() => {
+    if (!activeWorkout) return;
+    const sync = () => setHomeElapsed(calculateWorkoutElapsedSeconds(activeWorkout));
+    sync();
+
+    const interval = setInterval(() => {
+      if (!activeWorkout.isPaused) sync();
+    }, 1000);
+
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') sync();
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('focus', onVisible);
+    window.addEventListener('pageshow', onVisible);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('focus', onVisible);
+      window.removeEventListener('pageshow', onVisible);
+    };
+  }, [activeWorkout?.startTimestamp, activeWorkout?.isPaused, activeWorkout?.pausedAtTimestamp, activeWorkout?.pausedTotalMs]);
+
   return (
     <div className="space-y-4 pb-24">
       {/* BANNER SE HOUVER TREINO EM ANDAMENTO (Sem fundo verde fixo) */}
@@ -62,7 +93,7 @@ export const HomeTab: React.FC<Props> = ({
               {activeWorkout.workoutName}
             </h3>
             <p className="text-xs text-gray-400">
-              {activeWorkout.exercises.length} exercícios • Toque para continuar
+              {activeWorkout.exercises.length} exercícios • <span className="font-mono text-brand font-bold">{formatWorkoutTime(homeElapsed)}</span> decorridos
             </p>
           </div>
 

@@ -1,4 +1,4 @@
-import { PlanExerciseRaw, WorkoutSet, MuscleGroup } from '../types';
+import { PlanExerciseRaw, WorkoutSet, MuscleGroup, ActiveWorkoutSession } from '../types';
 import { EXERCISE_CATALOG } from '../data/exerciseCatalog';
 
 export interface ParsedSeries {
@@ -8,6 +8,40 @@ export interface ParsedSeries {
   factor: number;
   reps: string;
   technique?: string;
+}
+
+/**
+ * Calcula os segundos decorridos de treino de forma imune a suspensão de segundo plano (background).
+ * Utiliza timestamps absolutos (Date.now()) descontando pausas acumuladas e pausa em andamento.
+ */
+export function calculateWorkoutElapsedSeconds(
+  session: ActiveWorkoutSession | null,
+  now: number = Date.now()
+): number {
+  if (!session || !session.startTimestamp) return 0;
+
+  const pausedTotal = session.pausedTotalMs || 0;
+  const currentPauseDuration = (session.isPaused && session.pausedAtTimestamp)
+    ? Math.max(0, now - session.pausedAtTimestamp)
+    : 0;
+
+  const totalEffectiveMs = now - session.startTimestamp - pausedTotal - currentPauseDuration;
+  return Math.max(0, Math.floor(totalEffectiveMs / 1000));
+}
+
+/**
+ * Formata segundos no formato MM:SS ou H:MM:SS para treinos longos
+ */
+export function formatWorkoutTime(seconds: number): string {
+  const s = Math.max(0, Math.floor(seconds));
+  const hrs = Math.floor(s / 3600);
+  const mins = Math.floor((s % 3600) / 60);
+  const secs = s % 60;
+
+  if (hrs > 0) {
+    return `${hrs}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+  return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
 export function countFor(meta: string, label: string, fallback = 0): number {

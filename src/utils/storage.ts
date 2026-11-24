@@ -7,6 +7,7 @@ import {
 } from '../types';
 import { DEFAULT_PLANS } from '../data/defaultPlans';
 import { MUSCLE_LABELS } from '../data/exerciseCatalog';
+import { calculateWorkoutElapsedSeconds } from './workoutParser';
 
 const KEYS = {
   CURRENT_PLAN_ID: 'forge_plan_id',
@@ -215,7 +216,8 @@ export function completeWorkout(session: ActiveWorkoutSession): HistoryEntry {
     };
   }).filter(e => e.series.length > 0);
 
-  const durationMinutes = Math.max(1, Math.round(session.elapsedSeconds / 60));
+  const finalElapsedSeconds = calculateWorkoutElapsedSeconds(session);
+  const durationMinutes = Math.max(1, Math.round(finalElapsedSeconds / 60));
 
   const newEntry: HistoryEntry = {
     id: `hist_${Date.now()}`,

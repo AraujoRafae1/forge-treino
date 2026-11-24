@@ -14,6 +14,7 @@ import {
   releaseScreenWakeLock 
 } from '../utils/audioAlarm';
 import { completeWorkout, getSavedWeight, saveActiveWorkout } from '../utils/storage';
+import { calculateWorkoutElapsedSeconds, formatWorkoutTime } from '../utils/workoutParser';
 import { EXERCISE_CATALOG, MUSCLE_LABELS } from '../data/exerciseCatalog';
 import { ExerciseSubstitutionModal } from './ExerciseSubstitutionModal';
 import { AddExerciseModal } from './AddExerciseModal';
@@ -62,6 +63,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
   const [openDemoIndex, setOpenDemoIndex] = useState<number | null>(null);
   const [restRemaining, setRestRemaining] = useState<number>(0);
   const [confirmExit, setConfirmExit] = useState(false);
+  const [displayElapsed, setDisplayElapsed] = useState<number>(() => calculateWorkoutElapsedSeconds(session));
 
   // Mantém a tela acesa enquanto o treino estiver ativo
   useEffect(() => {
@@ -71,20 +73,63 @@ export const LiveWorkoutModal: React.FC<Props> = ({
     };
   }, []);
 
-  // Cronômetro do Treino (tempo total)
+  // Cronômetro do Treino com Sincronização Absoluta por Timestamps (iOS / Android / PWA em segundo plano)
   useEffect(() => {
+    const syncElapsed = () => {
+      const realElapsed = calculateWorkoutElapsedSeconds(session);
+      setDisplayElapsed(realElapsed);
+    };
+
+    // Sincroniza imediatamente na montagem
+    syncElapsed();
+
+    // Ticker visual suave para atualizar os segundos na tela
     const timer = setInterval(() => {
       if (!session.isPaused) {
-        const updated = {
-          ...session,
-          elapsedSeconds: session.elapsedSeconds + 1
-        };
-        onUpdateSession(updated);
-        saveActiveWorkout(updated);
+        syncElapsed();
       }
-    }, 1000);
+    }, 500);
 
-    return () => clearInterval(timer);
+    // Eventos disparados quando o celular é desbloqueado ou o app volta do segundo plano
+    const handleVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        syncElapsed();
+        // Reativa WakeLock se necessário ao voltar do segundo plano
+        if (!session.isPaused) {
+          enableScreenWakeLock();
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+    window.addEventListener('focus', handleVisibilityOrFocus);
+    window.addEventListener('pageshow', handleVisibilityOrFocus);
+
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+      window.removeEventListener('pageshow', handleVisibilityOrFocus);
+    };
+  }, [session.startTimestamp, session.isPaused, session.pausedAtTimestamp, session.pausedTotalMs]);
+
+  // Persistência periódica do tempo de treino no localStorage (a cada 5 segundos ou ao pausar/sair)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!session.isPaused) {
+        const realElapsed = calculateWorkoutElapsedSeconds(session);
+        if (realElapsed !== session.elapsedSeconds) {
+          const updated = {
+            ...session,
+            elapsedSeconds: realElapsed
+          };
+          onUpdateSession(updated);
+          saveActiveWorkout(updated);
+        }
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, [session, onUpdateSession]);
 
   // Cronômetro de Descanso com Sincronização de Fundo (iOS e Android)
@@ -130,25 +175,54 @@ export const LiveWorkoutModal: React.FC<Props> = ({
       }
     };
     document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('focus', onVisibilityChange);
+    window.addEventListener('pageshow', onVisibilityChange);
 
     return () => {
       clearInterval(interval);
       document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('focus', onVisibilityChange);
+      window.removeEventListener('pageshow', onVisibilityChange);
     };
   }, [session.restTimer, onUpdateSession]);
 
-  const formatTime = (seconds: number) => {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  };
-
   const togglePause = () => {
-    const updated: ActiveWorkoutSession = {
-      ...session,
-      isPaused: !session.isPaused,
-      pausedAtTimestamp: !session.isPaused ? Date.now() : null
-    };
+    const now = Date.now();
+    let updated: ActiveWorkoutSession;
+
+    if (session.isPaused) {
+      // Retomando o treino: acumula a duração da pausa decorrida
+      const pauseDuration = session.pausedAtTimestamp ? Math.max(0, now - session.pausedAtTimestamp) : 0;
+      const newPausedTotal = (session.pausedTotalMs || 0) + pauseDuration;
+      
+      const newElapsed = calculateWorkoutElapsedSeconds({
+        ...session,
+        isPaused: false,
+        pausedAtTimestamp: null,
+        pausedTotalMs: newPausedTotal
+      }, now);
+
+      updated = {
+        ...session,
+        isPaused: false,
+        pausedAtTimestamp: null,
+        pausedTotalMs: newPausedTotal,
+        elapsedSeconds: newElapsed
+      };
+      enableScreenWakeLock();
+    } else {
+      // Pausando o treino: marca o momento exato do pause
+      const currentElapsed = calculateWorkoutElapsedSeconds(session, now);
+      updated = {
+        ...session,
+        isPaused: true,
+        pausedAtTimestamp: now,
+        elapsedSeconds: currentElapsed
+      };
+      releaseScreenWakeLock();
+    }
+
+    setDisplayElapsed(updated.elapsedSeconds);
     onUpdateSession(updated);
     saveActiveWorkout(updated);
   };
@@ -404,7 +478,13 @@ export const LiveWorkoutModal: React.FC<Props> = ({
       // Ignora erro de canvas
     }
 
-    completeWorkout(session);
+    const finalElapsed = calculateWorkoutElapsedSeconds(session);
+    const finalizedSession: ActiveWorkoutSession = {
+      ...session,
+      elapsedSeconds: finalElapsed
+    };
+
+    completeWorkout(finalizedSession);
     onFinishWorkout();
   };
 
@@ -434,7 +514,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
           <div className="flex items-center gap-1.5 bg-app px-3 py-1.5 rounded-xl border border-app">
             <Clock className="w-4 h-4 text-brand" />
             <span className="font-mono text-base font-bold text-brand">
-              {formatTime(session.elapsedSeconds)}
+              {formatWorkoutTime(displayElapsed)}
             </span>
           </div>
 
@@ -487,7 +567,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
 
             <div className="flex items-center gap-2">
               <span className="font-mono text-2xl font-black text-brand tracking-wider">
-                {formatTime(restRemaining)}
+                {formatWorkoutTime(restRemaining)}
               </span>
 
               <div className="flex items-center gap-1">

@@ -82,6 +82,7 @@ export interface ActiveWorkoutSession {
   elapsedSeconds: number;
   isPaused: boolean;
   pausedAtTimestamp: number | null;
+  pausedTotalMs?: number;
   exercises: ActiveExerciseSession[];
   restTimer: {
     totalSeconds: number;

@@ -13,7 +13,7 @@ import {
   getSavedWeight, 
   saveActiveWorkout 
 } from './utils/storage';
-import { parseSeriesForExercise } from './utils/workoutParser';
+import { parseSeriesForExercise, calculateWorkoutElapsedSeconds } from './utils/workoutParser';
 import { applyTheme } from './utils/theme';
 import { EXERCISE_CATALOG, detectMuscleFromName, MUSCLE_LABELS } from './data/exerciseCatalog';
 import { HomeTab } from './components/HomeTab';
@@ -36,13 +36,23 @@ export function App() {
     applyTheme(settings.theme || 'green');
   }, [settings.theme]);
 
-  // Se houver treino salvo em andamento ao abrir a página, mantém o estado com GIFs garantidos
+  // Se houver treino salvo em andamento ao abrir a página, mantém o estado com GIFs garantidos e tempo recalculado
   useEffect(() => {
     const saved = getActiveWorkout();
     if (saved) {
+      const now = Date.now();
+      const realStart = saved.startTimestamp || (now - (saved.elapsedSeconds || 0) * 1000);
+      const safeSession: ActiveWorkoutSession = {
+        ...saved,
+        startTimestamp: realStart,
+        pausedTotalMs: saved.pausedTotalMs || 0
+      };
+      const realElapsed = calculateWorkoutElapsedSeconds(safeSession, now);
+
       // Garante que todos os exercícios do treino salvo tenham o demoUrl preenchido
       const backfilled: ActiveWorkoutSession = {
-        ...saved,
+        ...safeSession,
+        elapsedSeconds: realElapsed,
         exercises: saved.exercises.map(ex => ({
           ...ex,
           demoUrl: ex.demoUrl || EXERCISE_CATALOG.find(
@@ -51,6 +61,7 @@ export function App() {
         }))
       };
       setActiveWorkout(backfilled);
+      saveActiveWorkout(backfilled);
       setIsLiveWorkoutOpen(true);
     }
   }, []);
@@ -125,6 +136,7 @@ export function App() {
       elapsedSeconds: 0,
       isPaused: false,
       pausedAtTimestamp: null,
+      pausedTotalMs: 0,
       exercises,
       restTimer: null
     };
