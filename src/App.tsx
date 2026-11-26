@@ -14,6 +14,7 @@ import {
   saveActiveWorkout 
 } from './utils/storage';
 import { parseSeriesForExercise, calculateWorkoutElapsedSeconds } from './utils/workoutParser';
+import { cancelScheduledRestAlarm } from './utils/audioAlarm';
 import { applyTheme } from './utils/theme';
 import { EXERCISE_CATALOG, detectMuscleFromName, MUSCLE_LABELS } from './data/exerciseCatalog';
 import { HomeTab } from './components/HomeTab';
@@ -157,6 +158,7 @@ export function App() {
   };
 
   const handleDiscardWorkout = () => {
+    cancelScheduledRestAlarm();
     setActiveWorkout(null);
     saveActiveWorkout(null);
     setIsLiveWorkoutOpen(false);
@@ -216,6 +218,8 @@ export function App() {
           onDiscardWorkout={handleDiscardWorkout}
           onMinimizeWorkout={handleMinimizeWorkout}
           standardRestSeconds={settings.standardRestSeconds}
+          soundEnabled={settings.soundEnabled !== false}
+          vibrationEnabled={settings.vibrationEnabled !== false}
         />
       )}
     </div>

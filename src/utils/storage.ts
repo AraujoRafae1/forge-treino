@@ -23,12 +23,16 @@ export interface AppSettings {
   standardRestSeconds: number;
   restPauseSeconds: number;
   theme: string;
+  soundEnabled?: boolean;
+  vibrationEnabled?: boolean;
 }
 
 const DEFAULT_SETTINGS: AppSettings = {
   standardRestSeconds: 90,
   restPauseSeconds: 10,
-  theme: 'emerald'
+  theme: 'emerald',
+  soundEnabled: true,
+  vibrationEnabled: true
 };
 
 // Utilitários de leitura/escrita segura no localStorage

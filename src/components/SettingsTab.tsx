@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   getAppSettings, 
   saveAppSettings, 
@@ -8,7 +8,11 @@ import {
 import { 
   playRestAlarm, 
   triggerHapticFeedback, 
+  checkNotificationPermission,
   requestNotificationPermission,
+  checkExactAlarmPermission,
+  requestExactAlarmPermission,
+  isNativeApp,
   initAudioContext
 } from '../utils/audioAlarm';
 import { THEMES, applyTheme } from '../utils/theme';
@@ -16,6 +20,7 @@ import {
   Palette, 
   Volume2, 
   Bell, 
+  Vibrate,
   Download, 
   Upload, 
   Check 
@@ -28,10 +33,14 @@ interface Props {
 export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
   const [settings, setSettings] = useState(getAppSettings());
   const [testedSound, setTestedSound] = useState(false);
-  const [notifGranted, setNotifGranted] = useState(
-    typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted'
-  );
+  const [notifGranted, setNotifGranted] = useState(false);
+  const [exactGranted, setExactGranted] = useState(true);
   const [backupMessage, setBackupMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    checkNotificationPermission().then(setNotifGranted);
+    checkExactAlarmPermission().then(setExactGranted);
+  }, []);
 
   const restTimes = [60, 90, 120, 180];
   const restPauseTimes = [5, 10, 15, 20, 30];
@@ -55,10 +64,25 @@ export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
     onSettingsChanged();
   };
 
+  const handleToggleSound = () => {
+    const next = !(settings.soundEnabled !== false);
+    const updated = saveAppSettings({ soundEnabled: next });
+    setSettings(updated);
+    onSettingsChanged();
+  };
+
+  const handleToggleVibration = () => {
+    const next = !(settings.vibrationEnabled !== false);
+    const updated = saveAppSettings({ vibrationEnabled: next });
+    setSettings(updated);
+    onSettingsChanged();
+    if (next) triggerHapticFeedback();
+  };
+
   const handleTestAudio = () => {
     initAudioContext();
-    playRestAlarm();
-    triggerHapticFeedback();
+    if (settings.soundEnabled !== false) playRestAlarm();
+    if (settings.vibrationEnabled !== false) triggerHapticFeedback();
     setTestedSound(true);
     setTimeout(() => setTestedSound(false), 2000);
   };
@@ -66,6 +90,15 @@ export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
   const handleRequestNotification = async () => {
     const ok = await requestNotificationPermission();
     setNotifGranted(ok);
+    if (ok) {
+      triggerHapticFeedback();
+      checkExactAlarmPermission().then(setExactGranted);
+    }
+  };
+
+  const handleRequestExactAlarm = async () => {
+    const ok = await requestExactAlarmPermission();
+    setExactGranted(ok);
   };
 
   const handleDownloadBackup = () => {
@@ -266,22 +299,70 @@ export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
       {/* Áudio, Vibração e Notificações */}
       <div className="bg-card border border-app rounded-2xl p-4 shadow-sm space-y-3">
         <div>
-          <h3 className="text-sm font-bold text-white">Alarmes & Notificações</h3>
+          <h3 className="text-sm font-bold text-white">Alarmes, Vibração & Notificações</h3>
           <p className="text-xs text-gray-400">
-            Garante que o alarme toque mesmo em segundo plano ou tela bloqueada
+            Configure o alerta sonoro e vibratório ao fim do descanso, inclusive em segundo plano
           </p>
         </div>
 
         <div className="space-y-2">
-          {/* Teste de Som */}
+          {/* Toggle Som */}
           <div className="p-3 rounded-xl bg-card-subtle border border-app flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="p-2 rounded-lg bg-brand-subtle text-brand">
                 <Volume2 className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Sinal Sonoro de Alarme</span>
-                <span className="text-[11px] text-gray-400">Toque sintetizado penetrante + vibração</span>
+                <span className="text-xs font-bold text-white block">Som do Alarme</span>
+                <span className="text-[11px] text-gray-400">Beeps esportivos ao encerrar o descanso</span>
+              </div>
+            </div>
+
+            <button
+              onClick={handleToggleSound}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                settings.soundEnabled !== false
+                  ? 'bg-brand text-black shadow-brand'
+                  : 'bg-elevated text-gray-400 border border-app'
+              }`}
+            >
+              {settings.soundEnabled !== false ? 'Ativo' : 'Desligado'}
+            </button>
+          </div>
+
+          {/* Toggle Vibração */}
+          <div className="p-3 rounded-xl bg-card-subtle border border-app flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-lg bg-brand-subtle text-brand">
+                <Vibrate className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white block">Aviso Vibratório</span>
+                <span className="text-[11px] text-gray-400">Vibração forte ao finalizar o descanso (Android/APK)</span>
+              </div>
+            </div>
+
+            <button
+              onClick={handleToggleVibration}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                settings.vibrationEnabled !== false
+                  ? 'bg-brand text-black shadow-brand'
+                  : 'bg-elevated text-gray-400 border border-app'
+              }`}
+            >
+              {settings.vibrationEnabled !== false ? 'Ativo' : 'Desligado'}
+            </button>
+          </div>
+
+          {/* Teste de Som e Vibração */}
+          <div className="p-3 rounded-xl bg-card-subtle border border-app flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-lg bg-elevated text-brand">
+                <Volume2 className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white block">Testar Alarme e Vibração</span>
+                <span className="text-[11px] text-gray-400">Dispara toque + vibração imediata no aparelho</span>
               </div>
             </div>
 
@@ -293,7 +374,7 @@ export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
                   : 'bg-elevated text-brand border border-app hover:bg-[var(--bg-hover)]'
               }`}
             >
-              {testedSound ? 'Tocando! 🔔' : 'Testar Som'}
+              {testedSound ? 'Tocando! 🔔' : 'Testar'}
             </button>
           </div>
 
@@ -304,8 +385,8 @@ export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
                 <Bell className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold text-white block">Notificações no Celular</span>
-                <span className="text-[11px] text-gray-400">Avisa na tela bloqueada ao fim do descanso</span>
+                <span className="text-xs font-bold text-white block">Notificações em 2º Plano</span>
+                <span className="text-[11px] text-gray-400">Avisa com som e vibração na tela bloqueada</span>
               </div>
             </div>
 
@@ -321,6 +402,23 @@ export const SettingsTab: React.FC<Props> = ({ onSettingsChanged }) => {
               {notifGranted ? '✓ Permitido' : 'Ativar'}
             </button>
           </div>
+
+          {isNativeApp() && notifGranted && !exactGranted && (
+            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between">
+              <div className="pr-2">
+                <span className="text-xs font-bold text-amber-300 block">Alarme Exato em 2º Plano</span>
+                <span className="text-[11px] text-amber-200/80 block">
+                  Libere "Alarmes e lembretes" para disparar no segundo exato com a tela desligada
+                </span>
+              </div>
+              <button
+                onClick={handleRequestExactAlarm}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-400 text-black shrink-0"
+              >
+                Liberar
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

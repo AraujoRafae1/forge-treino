@@ -10,6 +10,10 @@ import {
   playRestAlarm, 
   triggerHapticFeedback, 
   sendRestNotification, 
+  scheduleRestAlarm,
+  cancelScheduledRestAlarm,
+  checkNotificationPermission,
+  requestNotificationPermission,
   enableScreenWakeLock, 
   releaseScreenWakeLock 
 } from '../utils/audioAlarm';
@@ -42,6 +46,8 @@ interface Props {
   onDiscardWorkout: () => void;
   onMinimizeWorkout: () => void;
   standardRestSeconds: number;
+  soundEnabled?: boolean;
+  vibrationEnabled?: boolean;
 }
 
 export const LiveWorkoutModal: React.FC<Props> = ({
@@ -50,7 +56,9 @@ export const LiveWorkoutModal: React.FC<Props> = ({
   onFinishWorkout,
   onDiscardWorkout,
   onMinimizeWorkout,
-  standardRestSeconds
+  standardRestSeconds,
+  soundEnabled = true,
+  vibrationEnabled = true
 }) => {
   const [substitutionModal, setSubstitutionModal] = useState<{
     exerciseIndex: number;
@@ -63,10 +71,12 @@ export const LiveWorkoutModal: React.FC<Props> = ({
   const [openDemoIndex, setOpenDemoIndex] = useState<number | null>(null);
   const [restRemaining, setRestRemaining] = useState<number>(0);
   const [confirmExit, setConfirmExit] = useState(false);
+  const [notifGranted, setNotifGranted] = useState<boolean>(true);
   const [displayElapsed, setDisplayElapsed] = useState<number>(() => calculateWorkoutElapsedSeconds(session));
 
-  // Mantém a tela acesa enquanto o treino estiver ativo
+  // Verifica status das notificações e mantém a tela acesa enquanto o treino estiver ativo
   useEffect(() => {
+    checkNotificationPermission().then(setNotifGranted);
     enableScreenWakeLock();
     return () => {
       releaseScreenWakeLock();
@@ -132,25 +142,34 @@ export const LiveWorkoutModal: React.FC<Props> = ({
     return () => clearInterval(interval);
   }, [session, onUpdateSession]);
 
-  // Cronômetro de Descanso com Sincronização de Fundo (iOS e Android)
+  // Cronômetro de Descanso com Sincronização de Fundo (APK Nativo + Service Worker + Visibilidade)
   useEffect(() => {
     if (!session.restTimer) {
       setRestRemaining(0);
       return;
     }
 
+    if (session.isPaused) {
+      const pausedAt = session.pausedAtTimestamp || Date.now();
+      const remainingAtPause = Math.max(0, Math.ceil((session.restTimer.endTimestamp - pausedAt) / 1000));
+      setRestRemaining(remainingAtPause);
+      return;
+    }
+
     const checkRestTime = () => {
-      if (!session.restTimer) return;
+      if (!session.restTimer || session.isPaused) return;
       const now = Date.now();
       const diff = Math.ceil((session.restTimer.endTimestamp - now) / 1000);
 
       if (diff <= 0) {
         // Alarme finalizado!
-        playRestAlarm();
-        triggerHapticFeedback();
+        cancelScheduledRestAlarm();
+        if (soundEnabled) playRestAlarm();
+        if (vibrationEnabled) triggerHapticFeedback();
         sendRestNotification(
           session.restTimer.exerciseName, 
-          session.restTimer.setIndex + 1
+          session.restTimer.setIndex + 1,
+          vibrationEnabled
         );
 
         // Remove o timer de descanso
@@ -184,16 +203,23 @@ export const LiveWorkoutModal: React.FC<Props> = ({
       window.removeEventListener('focus', onVisibilityChange);
       window.removeEventListener('pageshow', onVisibilityChange);
     };
-  }, [session.restTimer, onUpdateSession]);
+  }, [session.restTimer, session.isPaused, session.pausedAtTimestamp, soundEnabled, vibrationEnabled, onUpdateSession]);
 
   const togglePause = () => {
     const now = Date.now();
     let updated: ActiveWorkoutSession;
 
     if (session.isPaused) {
-      // Retomando o treino: acumula a duração da pausa decorrida
+      // Retomando o treino: acumula a duração da pausa decorrida e desloca restTimer ativo
       const pauseDuration = session.pausedAtTimestamp ? Math.max(0, now - session.pausedAtTimestamp) : 0;
       const newPausedTotal = (session.pausedTotalMs || 0) + pauseDuration;
+
+      const resumedRestTimer = session.restTimer
+        ? {
+            ...session.restTimer,
+            endTimestamp: session.restTimer.endTimestamp + pauseDuration
+          }
+        : null;
       
       const newElapsed = calculateWorkoutElapsedSeconds({
         ...session,
@@ -207,11 +233,20 @@ export const LiveWorkoutModal: React.FC<Props> = ({
         isPaused: false,
         pausedAtTimestamp: null,
         pausedTotalMs: newPausedTotal,
-        elapsedSeconds: newElapsed
+        elapsedSeconds: newElapsed,
+        restTimer: resumedRestTimer
       };
+      if (resumedRestTimer) {
+        scheduleRestAlarm(
+          resumedRestTimer.endTimestamp,
+          resumedRestTimer.exerciseName,
+          resumedRestTimer.setIndex + 1,
+          vibrationEnabled
+        );
+      }
       enableScreenWakeLock();
     } else {
-      // Pausando o treino: marca o momento exato do pause
+      // Pausando o treino: marca o momento exato do pause e suspende notificação agendada
       const currentElapsed = calculateWorkoutElapsedSeconds(session, now);
       updated = {
         ...session,
@@ -219,6 +254,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
         pausedAtTimestamp: now,
         elapsedSeconds: currentElapsed
       };
+      cancelScheduledRestAlarm();
       releaseScreenWakeLock();
     }
 
@@ -243,6 +279,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
     };
     onUpdateSession(updated);
     saveActiveWorkout(updated);
+    scheduleRestAlarm(endTimestamp, exerciseName, setIndex + 1, vibrationEnabled);
   };
 
   const adjustRest = (deltaSeconds: number) => {
@@ -262,9 +299,16 @@ export const LiveWorkoutModal: React.FC<Props> = ({
     };
     onUpdateSession(updated);
     saveActiveWorkout(updated);
+    scheduleRestAlarm(
+      newEnd,
+      session.restTimer.exerciseName,
+      session.restTimer.setIndex + 1,
+      vibrationEnabled
+    );
   };
 
   const skipRest = () => {
+    cancelScheduledRestAlarm();
     const updated: ActiveWorkoutSession = {
       ...session,
       restTimer: null
@@ -484,6 +528,7 @@ export const LiveWorkoutModal: React.FC<Props> = ({
       elapsedSeconds: finalElapsed
     };
 
+    cancelScheduledRestAlarm();
     completeWorkout(finalizedSession);
     onFinishWorkout();
   };
@@ -550,47 +595,76 @@ export const LiveWorkoutModal: React.FC<Props> = ({
       {/* BARRA FIXA DE DESCANSO */}
       {session.restTimer && (
         <div className="bg-card border-b-2 border-brand-solid p-3 shrink-0 shadow-lg animate-in slide-in-from-top-2">
-          <div className="max-w-2xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-brand text-black flex items-center justify-center font-bold animate-pulse shadow-brand">
-                <Bell className="w-4 h-4" />
+          <div className="max-w-2xl mx-auto flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-brand text-black flex items-center justify-center font-bold animate-pulse shadow-brand">
+                  <Bell className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-brand tracking-wider">
+                    Descanso Ativo
+                  </span>
+                  <div className="text-xs text-gray-300 font-medium truncate max-w-[150px] sm:max-w-xs">
+                    Próxima série de {session.restTimer.exerciseName}
+                  </div>
+                </div>
               </div>
-              <div>
-                <span className="text-[10px] uppercase font-bold text-brand tracking-wider">
-                  Descanso Ativo
+
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-2xl font-black text-brand tracking-wider">
+                  {formatWorkoutTime(restRemaining)}
                 </span>
-                <div className="text-xs text-gray-300 font-medium truncate max-w-[150px] sm:max-w-xs">
-                  Próxima série de {session.restTimer.exerciseName}
+
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => adjustRest(30)}
+                    className="px-2 py-1 text-xs font-bold rounded-lg bg-elevated hover:bg-[var(--bg-hover)] text-brand border border-app"
+                  >
+                    +30s
+                  </button>
+                  <button
+                    onClick={() => adjustRest(-15)}
+                    className="px-2 py-1 text-xs font-bold rounded-lg bg-elevated hover:bg-[var(--bg-hover)] text-gray-300 border border-app"
+                  >
+                    -15s
+                  </button>
+                  <button
+                    onClick={skipRest}
+                    className="px-2.5 py-1 text-xs font-bold rounded-lg bg-brand text-black hover:bg-brand-hover shadow-brand"
+                  >
+                    Pular
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-2xl font-black text-brand tracking-wider">
-                {formatWorkoutTime(restRemaining)}
-              </span>
-
-              <div className="flex items-center gap-1">
+            {!notifGranted && (
+              <div className="flex items-center justify-between bg-brand-subtle border border-brand-solid/40 rounded-xl px-3 py-1.5 text-[11px]">
+                <span className="text-gray-200">
+                  Ative as notificações para vibrar e avisar mesmo em 2º plano.
+                </span>
                 <button
-                  onClick={() => adjustRest(30)}
-                  className="px-2 py-1 text-xs font-bold rounded-lg bg-elevated hover:bg-[var(--bg-hover)] text-brand border border-app"
+                  type="button"
+                  onClick={async () => {
+                    const ok = await requestNotificationPermission();
+                    setNotifGranted(ok);
+                    if (ok && session.restTimer) {
+                      scheduleRestAlarm(
+                        session.restTimer.endTimestamp,
+                        session.restTimer.exerciseName,
+                        session.restTimer.setIndex + 1,
+                        vibrationEnabled
+                      );
+                      triggerHapticFeedback();
+                    }
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-brand text-black font-bold shrink-0 ml-2"
                 >
-                  +30s
-                </button>
-                <button
-                  onClick={() => adjustRest(-15)}
-                  className="px-2 py-1 text-xs font-bold rounded-lg bg-elevated hover:bg-[var(--bg-hover)] text-gray-300 border border-app"
-                >
-                  -15s
-                </button>
-                <button
-                  onClick={skipRest}
-                  className="px-2.5 py-1 text-xs font-bold rounded-lg bg-brand text-black hover:bg-brand-hover shadow-brand"
-                >
-                  Pular
+                  Ativar
                 </button>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}

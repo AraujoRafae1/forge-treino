@@ -14,10 +14,16 @@ import {
   formatWorkoutTime 
 } from '../utils/workoutParser';
 import { 
+  checkNotificationPermission, 
+  requestNotificationPermission,
+  triggerHapticFeedback
+} from '../utils/audioAlarm';
+import { 
   Play, 
   Dumbbell, 
   Clock, 
   Layers,
+  Bell,
   X,
   Video,
   Trash2
@@ -53,6 +59,11 @@ export const HomeTab: React.FC<Props> = ({
   const currentWorkout = plan.workouts[selectedWorkoutIndex] || plan.workouts[0];
 
   const [homeElapsed, setHomeElapsed] = useState<number>(() => calculateWorkoutElapsedSeconds(activeWorkout));
+  const [notifGranted, setNotifGranted] = useState<boolean>(false);
+
+  useEffect(() => {
+    checkNotificationPermission().then(setNotifGranted);
+  }, []);
 
   // Mantém o cronômetro do banner da tela inicial sincronizado mesmo ao voltar do segundo plano
   useEffect(() => {
@@ -345,6 +356,40 @@ export const HomeTab: React.FC<Props> = ({
 
       {/* MAPA ANATÔMICO DE RECUPERAÇÃO MUSCULAR */}
       <MuscleAnatomyCard recoveryData={recoveryData} />
+
+      {/* CARD DE AVISO DE DESCANSO (SOM, VIBRAÇÃO E SEGUNDO PLANO) */}
+      <div className="bg-card border border-app rounded-2xl p-4 shadow-sm flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-10 h-10 rounded-xl bg-brand-subtle text-brand flex items-center justify-center shrink-0">
+            <Bell className="w-5 h-5" />
+          </div>
+          <div className="min-w-0">
+            <h3 className="text-xs font-bold text-white">Aviso de descanso (som + vibração)</h3>
+            <p className="text-[11px] text-gray-400 truncate">
+              {notifGranted
+                ? 'Ativo • Alerta sonoro e vibratório mesmo em 2º plano'
+                : 'Ative para receber alerta e vibração ao fim do descanso'}
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={async () => {
+            const ok = await requestNotificationPermission();
+            setNotifGranted(ok);
+            if (ok) triggerHapticFeedback();
+          }}
+          disabled={notifGranted}
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold shrink-0 transition-all ${
+            notifGranted
+              ? 'bg-elevated text-brand border border-brand/40 cursor-default'
+              : 'bg-brand text-black hover:bg-brand-hover shadow-brand'
+          }`}
+        >
+          {notifGranted ? '✓ Ativo' : 'Ativar'}
+        </button>
+      </div>
 
       {/* MODAL DE PRÉ-VISUALIZAÇÃO DE GIF */}
       {previewDemo && (
